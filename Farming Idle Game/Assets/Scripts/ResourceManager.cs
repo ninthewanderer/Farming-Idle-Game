@@ -5,6 +5,9 @@ using UnityEngine;
 //This Script Manages permanent and temporary crop/seed traits
 public class ResourceManager : MonoBehaviour
 {
+    //add moneyManager from MoneyManager Script
+    public MoneyManager moneyManager;
+
     // Permanent crop traits (Such as Cost of seed and Time to grow)
     [System.Serializable]
     public class CropDefinition
@@ -13,6 +16,7 @@ public class ResourceManager : MonoBehaviour
         public float SeedCost;
         public float PlantValue;
         public float GrowTime;
+
 
         public CropDefinition(string cropName, float seedCost, float plantValue, float growTime)
         {
@@ -44,10 +48,19 @@ public class ResourceManager : MonoBehaviour
 
     void Start()
     {
+        //reference to money manager script for selling/buying seeds and crops
+        moneyManager = FindObjectOfType<MoneyManager>();
         // Register crops (I added random crops with random values as an example, feel free to change)
         RegisterCrop("Carrot", 5f, 15f, 30f);
         RegisterCrop("Potato", 10f, 30f, 60f);
         RegisterCrop("Onion", 20f, 60f, 120f);
+
+        //Examples for calling these functions
+
+        BuySeeds("Carrot", 5);
+        PlantSeed("Potato");
+        HarvestCrop("Onion", 3);
+        SellCrop("Carrot", 3);
     }
 
 
@@ -118,5 +131,43 @@ public class ResourceManager : MonoBehaviour
         }
 
         return 0f;
+    }
+
+    //Subtract total money and add seeds to inventory
+    public bool BuySeeds(string cropName, int amount)
+    {
+        if (!CropDefinitions.ContainsKey(cropName))
+            return false;
+
+        float cost = CropDefinitions[cropName].SeedCost * amount;
+
+        if (moneyManager.SpendMoney(cost))
+        {
+            AddSeeds(cropName, amount);
+            return true;
+        }
+
+        return false;
+    }
+
+    //Add total money and subtract crops from inventory
+    public bool SellCrop(string cropName, int amount)
+    {
+        if (!CropStates.ContainsKey(cropName))
+            return false;
+
+        CropState state = CropStates[cropName];
+
+        if (state.PlantInventory >= amount)
+        {
+            state.PlantInventory -= amount;
+
+            float value = CropDefinitions[cropName].PlantValue * amount;
+            moneyManager.AddMoney(value);
+
+            return true;
+        }
+
+        return false;
     }
 }
