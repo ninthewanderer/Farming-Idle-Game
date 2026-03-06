@@ -2,25 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlotInteraction : MonoBehaviour
+public class PlotInteraction : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject InteractUI;
     [SerializeField] private GameObject PlantPrefab;
     private bool hasPlant = false;
     private PlantCycle plantCycle;
 
     private bool playerInRange = false;
     private GameObject Plant;
-
-    void OnEnable()
-    {
-        InteractUI.SetActive(false);
-    }
-
-    void OnDisable()
-    {
-
-    }
 
     void Update()
     {
@@ -30,7 +19,7 @@ public class PlotInteraction : MonoBehaviour
         }
     }
 
-    private void Interact()
+    public void Interact()
     {
         Debug.Log("Interacted with the plot!");
         if (!hasPlant)
@@ -49,7 +38,7 @@ public class PlotInteraction : MonoBehaviour
         }
     }
 
-    void Harvest()
+    private void Harvest()
     {
         hasPlant = false;
         // Make money go up
@@ -59,13 +48,25 @@ public class PlotInteraction : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        InteractUI.SetActive(true);
         playerInRange = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        InteractUI.SetActive(false);
         playerInRange = false;
+    }
+
+    public string GetInteractPrompt()
+    {
+        if (!hasPlant)
+        {
+            return "Press [E] to plant!";
+        } else if ((plantCycle != null && !plantCycle.isGrowing))
+        {
+            return "Press [E} to harvest!";
+        } else
+        {
+            return "Growing...";
+        }
     }
 }

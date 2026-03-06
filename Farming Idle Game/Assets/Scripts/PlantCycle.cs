@@ -7,8 +7,8 @@ public class PlantCycle : MonoBehaviour
     private bool _isGrowing = false;
     public bool isGrowing { get { return _isGrowing; } }
     // Serialized so we can see if it's working in real time
-    [SerializeField] private int growthTime;
-    [SerializeField] private int clickReduction;
+    [SerializeField] private int growthTime = 10;
+    [SerializeField] private float clickReduction = 1f;
     [SerializeField] private float currentGrowth = 0f;
 
     private bool playerInRange = false;
@@ -34,6 +34,7 @@ public class PlantCycle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         playerInRange = true;
+        Debug.Log("In range");
     }
     private void OnTriggerExit(Collider other)
     {
@@ -44,6 +45,7 @@ public class PlantCycle : MonoBehaviour
         if (!_isGrowing || !playerInRange) return;
 
         currentGrowth += clickReduction; // reduce remaining time
+        Debug.Log("Reducing time to" + currentGrowth);
     }
 }
 

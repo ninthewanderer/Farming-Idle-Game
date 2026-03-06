@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plotPrefab: {fileID: 6041324332358550931, guid: 1a5ec095e12e85c439d9a60f0dfb98eb, type: 3}
-  plotPositions: []
+  plotPositions:
+  - {fileID: 0}
