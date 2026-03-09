@@ -18,5 +18,4 @@ public class UIToggle : MonoBehaviour
             seedShopUI.SetActive(!seedShopUI.activeSelf);
         }
     }
-
 }

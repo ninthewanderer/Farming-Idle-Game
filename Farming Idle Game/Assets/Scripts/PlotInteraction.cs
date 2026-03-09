@@ -7,16 +7,25 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     [SerializeField] private GameObject PlantPrefab;
     private bool hasPlant = false;
     private PlantCycle plantCycle;
+    UiManager uimanager;
 
     private bool playerInRange = false;
     private GameObject Plant;
 
+    void awake()
+    {
+       
+
+
+
+    }
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Interact();
         }
+        
     }
 
     public void Interact()
@@ -41,7 +50,9 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     private void Harvest()
     {
         hasPlant = false;
-        // Make money go up
+        uimanager = FindObjectOfType<UiManager>();
+        uimanager.value += 5;
+        
         Destroy(Plant);
         Debug.Log("Plant has been harvested!");
 
