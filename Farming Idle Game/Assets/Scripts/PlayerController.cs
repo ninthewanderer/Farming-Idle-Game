@@ -54,4 +54,15 @@ public class PlayerController : MonoBehaviour
     {
         controls.Player.Disable();
     }
+
+    // Get and set so shop can upgrade player speed
+    public void SetMoveSpeed(float newSpeed)
+    {
+        _moveSpeed = newSpeed;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return _moveSpeed;
+    }
 }
