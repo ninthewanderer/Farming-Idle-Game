@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIToggle : MonoBehaviour
+public class shopToggle : MonoBehaviour
 {
     private GameObject seedShopUI;
     void Start()
