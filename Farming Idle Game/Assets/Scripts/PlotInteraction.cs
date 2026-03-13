@@ -11,11 +11,12 @@ public class PlotInteraction : MonoBehaviour, IInteractable
 
     private bool playerInRange = false;
     private GameObject Plant;
+    private MoneyManager moneyManager;
 
-    void awake()
+    void Start()
     {
-       
 
+        moneyManager = FindObjectOfType<MoneyManager>();
 
 
     }
@@ -50,9 +51,8 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     private void Harvest()
     {
         hasPlant = false;
-        uimanager = FindObjectOfType<UiManager>();
-        uimanager.value += 5;
-        
+        moneyManager.AddMoney(5);
+
         Destroy(Plant);
         Debug.Log("Plant has been harvested!");
 

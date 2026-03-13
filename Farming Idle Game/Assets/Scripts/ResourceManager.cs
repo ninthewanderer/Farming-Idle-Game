@@ -72,19 +72,19 @@ public class ResourceManager : MonoBehaviour
         //reference to money manager script for selling/buying seeds and crops
         moneyManager = FindObjectOfType<MoneyManager>();
         // Register crops (I added random crops with random values as an example, feel free to change)
-        RegisterCrop("Carrot", 5f, 15f, 30f);
-        RegisterCrop("Potato", 10f, 30f, 60f);
-        RegisterCrop("Onion", 20f, 60f, 120f);
-        RegisterCrop("Lettuce", 25f, 120f, 240f);
+        //RegisterCrop("Carrot", 5f, 15f, 30f);
+        //RegisterCrop("Potato", 10f, 30f, 60f);
+        //RegisterCrop("Onion", 20f, 60f, 120f);
+        //RegisterCrop("Lettuce", 25f, 120f, 240f);
 
         // Temporary watering can, can change values freely
         TendingDevices["Watering Can"] = new("Watering Can", 1f, 5f, "A basic watering can.", 0.10f);
 
         //Examples for calling these functions
-        BuySeeds("Carrot", 5);
-        PlantSeed("Potato");
-        HarvestCrop("Onion", 3);
-        SellCrop("Carrot", 3);
+       // BuySeeds("Carrot", 5);
+        //PlantSeed("Potato");
+        //HarvestCrop("Onion", 3);
+        //SellCrop("Carrot", 3);
     }
 
 
