@@ -21,6 +21,7 @@ public class ToolUpgrade : Upgrade
 
     // function to call when player opens shop ui to see if upgrade is available to purchase
     // idea is to be called elsewhere to see what's greyed out (or otherwise marked unavailable) in ui and what's not
+    // TODO: consider player buying a lvl 1 tool when they dont have one in inventory already
     public UpgradeState CheckUpgrade(TendingDevice device)
     {
         bool canAfford = moneyManager.CanAfford(UpgradeCost);
