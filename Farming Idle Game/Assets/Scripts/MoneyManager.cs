@@ -26,4 +26,9 @@ public class MoneyManager : MonoBehaviour
     {
         return CurrentMoney;
     }
+
+    public bool CanAfford(float amount)
+    {
+        return CurrentMoney >= amount;
+    }
 }

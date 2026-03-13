@@ -4,19 +4,6 @@ using UnityEngine;
 
 public abstract class Upgrade : MonoBehaviour
 {
-    public string UpgradeName;
-    public float UpgradeCost;
-    public string Description;
-    public float EffectValue; // value of upgrade (for exmaple +1 level, +10% speed)
-
-    public Upgrade(string upgradeName, float upgradeCost, string description, float effectValue)
-    {
-        UpgradeName = upgradeName;
-        UpgradeCost = upgradeCost;
-        Description = description;
-        EffectValue = effectValue;
-    }
-
     public enum UpgradeState
     {
         Locked,
@@ -24,5 +11,26 @@ public abstract class Upgrade : MonoBehaviour
         Purchased
     }
 
+    public string UpgradeName;
+    public float UpgradeCost;
+    public string Description;
+    // maybe dont need this anymore with the tools
+    public float Level; // current lvl/tier of upgrade
+    public UpgradeState State;
 
+    public Upgrade(string upgradeName, float upgradeCost, string description, float level, UpgradeState state)
+    {
+        UpgradeName = upgradeName;
+        UpgradeCost = upgradeCost;
+        Description = description;
+        Level = level;
+        State = state;
+    }
+
+    // implement methods to change state of upgrade
+    public abstract void UnlockUpgrade();
+
+    public abstract void PurchaseUpgrade();
+
+    public abstract void LockUpgrade();
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This Script Manages permanent and temporary crop/seed traits
+// CAM TODO: fix all functions with TendingDeviceDefinition and use new classes
 public class ResourceManager : MonoBehaviour
 {
     //add moneyManager from MoneyManager Script
@@ -42,22 +43,22 @@ public class ResourceManager : MonoBehaviour
     }
 
     // Plant tending device traits (watering can, fertilizer, sprinkler, etc.) Just using watering can for now
-    public class TendingDeviceDefinition
-    {
-        public string ToolName;
-        public float Level; // current upgrade level
-        public float ToolCost;
-        public string Description;
-        public float TimeReduction; // reduce grow timer by percentage when player uses tool on a plant
-        public TendingDeviceDefinition(string toolName, float level, float toolCost, string description, float timeReduction)
-        {
-            ToolName = toolName;
-            Level = level;
-            ToolCost = toolCost;
-            Description = description;
-            TimeReduction = timeReduction;
-        }
-    }
+    //public class TendingDeviceDefinition
+    //{
+    //    public string ToolName;
+    //    public float Level; // current upgrade level
+    //    public float ToolCost;
+    //    public string Description;
+    //    public float TimeReduction; // reduce grow timer by percentage when player uses tool on a plant
+    //    public TendingDeviceDefinition(string toolName, float level, float toolCost, string description, float timeReduction)
+    //    {
+    //        ToolName = toolName;
+    //        Level = level;
+    //        ToolCost = toolCost;
+    //        Description = description;
+    //        TimeReduction = timeReduction;
+    //    }
+    //}
 
     // Dictionaries to manage the registering of crops
     public Dictionary<string, CropDefinition> CropDefinitions = new Dictionary<string, CropDefinition>();
