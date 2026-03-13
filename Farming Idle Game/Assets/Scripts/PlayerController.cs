@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
-    
+    private ResourceManager resourceManager;
+
 
     // Gets the necessary components and uses the PlayerControls class to handle player movement.
     private void Awake()
@@ -21,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
         controls.Player.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => movement = Vector3.zero;
+
+        // trying out having inventory
+        resourceManager = FindObjectOfType<ResourceManager>();
     }
 
     private void Update()
