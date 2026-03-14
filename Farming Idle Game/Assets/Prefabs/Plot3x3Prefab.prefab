@@ -88,8 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2a53974c74a3e4680badcaacf8c8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
+  plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
   dirtMoundPrefab: {fileID: 7058289362302238884, guid: 2b0e0e596179a084dafee80ad1969393, type: 3}
+  gridSize: 3
+  plantSpacing: 1
 --- !u!65 &2990034973309140773
 BoxCollider:
   m_ObjectHideFlags: 0
