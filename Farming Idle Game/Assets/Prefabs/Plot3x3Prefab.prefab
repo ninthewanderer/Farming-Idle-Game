@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c13e6202d3ba0b048a56b2ce9626920e, type: 2}
     - target: {fileID: -8679921383154817045, guid: a85d9f31f9b9fcb4f9a4e62693627070, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.755
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a85d9f31f9b9fcb4f9a4e62693627070, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.20413658
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a85d9f31f9b9fcb4f9a4e62693627070, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.628
+      value: -5.8176794
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a85d9f31f9b9fcb4f9a4e62693627070, type: 3}
       propertyPath: m_LocalRotation.w
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
+  dirtMoundPrefab: {fileID: 7058289362302238884, guid: 2b0e0e596179a084dafee80ad1969393, type: 3}
 --- !u!65 &2990034973309140773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

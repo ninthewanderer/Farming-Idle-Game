@@ -56,10 +56,15 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         hasPlant = false;
         moneyManager.AddMoney(5);
 
-        Destroy(Plant);
-        Debug.Log("Plant has been harvested!");
+        if (Plant != null)
+            Destroy(Plant);
 
+        if (Dirt != null)
+            Destroy(Dirt);
+
+        Debug.Log("Plant has been harvested!");
     }
+
     private void OnTriggerEnter(Collider other)
     {
         playerInRange = true;
@@ -77,7 +82,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             return "Press [E] to plant!";
         } else if ((plantCycle != null && !plantCycle.isGrowing))
         {
-            return "Press [E} to harvest!";
+            return "Press [E] to harvest!";
         } else
         {
             return "Growing...";

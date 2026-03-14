@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 3
-  plotPrefab: {fileID: 6041324332358550931, guid: 1a5ec095e12e85c439d9a60f0dfb98eb, type: 3}
-  gridSize: 3
+  plotPrefab: {fileID: 3526122615659091070, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+  gridSize: 1
   spacing: 2
   plotCost: 500

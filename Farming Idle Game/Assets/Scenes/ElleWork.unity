@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2905238801859993971, guid: 1a5ec095e12e85c439d9a60f0dfb98eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6397085
+      value: 13.13
       objectReference: {fileID: 0}
     - target: {fileID: 2905238801859993971, guid: 1a5ec095e12e85c439d9a60f0dfb98eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -639,7 +639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1113622289}
-  value: 995
 --- !u!1001 &762188295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,7 +654,7 @@ PrefabInstance:
     - target: {fileID: -3832216825545317539, guid: 21a7dfb9561f98f45af1a9266ec4efc9, type: 3}
       propertyPath: plotPrefab
       value: 
-      objectReference: {fileID: 6041324332358550931, guid: 1a5ec095e12e85c439d9a60f0dfb98eb, type: 3}
+      objectReference: {fileID: 3526122615659091070, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
     - target: {fileID: 1135601531938059886, guid: 21a7dfb9561f98f45af1a9266ec4efc9, type: 3}
       propertyPath: m_Size.x
       value: 20
@@ -772,6 +771,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyManager: {fileID: 824599043}
+--- !u!1001 &870962297
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3526122615659091070, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_Name
+      value: Plot3x3Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.8176794
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
 --- !u!1 &877327886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,7 +1711,7 @@ PrefabInstance:
     - target: {fileID: -3832216825545317539, guid: 21a7dfb9561f98f45af1a9266ec4efc9, type: 3}
       propertyPath: plotPrefab
       value: 
-      objectReference: {fileID: 6041324332358550931, guid: 1a5ec095e12e85c439d9a60f0dfb98eb, type: 3}
+      objectReference: {fileID: 3526122615659091070, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
     - target: {fileID: 1135601531938059886, guid: 21a7dfb9561f98f45af1a9266ec4efc9, type: 3}
       propertyPath: m_Size.x
       value: 20
@@ -1939,3 +1995,4 @@ SceneRoots:
   - {fileID: 3046441617332224751}
   - {fileID: 762188295}
   - {fileID: 1801642230}
+  - {fileID: 870962297}

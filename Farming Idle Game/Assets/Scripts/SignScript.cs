@@ -5,7 +5,7 @@ public class PlotSign : MonoBehaviour
 {
     public float interactRange = 3f; //Can change if we decide to use clicking instead of E
     public GameObject plotPrefab;
-    public int gridSize = 3;
+    public int gridSize = 1;
     public float spacing = 2f;
     public float plotCost = 500f; //set to increase in cost by 500 for every sign bought
 
