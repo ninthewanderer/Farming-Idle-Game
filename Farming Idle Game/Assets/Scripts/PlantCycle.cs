@@ -11,11 +11,14 @@ public class PlantCycle : MonoBehaviour
     [SerializeField] private int growthTime = 10;
     [SerializeField] private float clickReduction = 0f;
     [SerializeField] private float currentGrowth = 0f;
+    private Renderer MeshRenderer;
 
     private bool playerInRange = false;
     void OnEnable()
     {
         _isGrowing = true;
+        MeshRenderer = GetComponent<Renderer>();
+        MeshRenderer.enabled = false; // hide plant until it starts growing, can be replaced with growth stages later
         StartCoroutine(PlantGrowth());
         resourceManager = FindObjectOfType<ResourceManager>();
         if (resourceManager == null)
@@ -29,10 +32,14 @@ public class PlantCycle : MonoBehaviour
         while (currentGrowth < growthTime)
         {
             currentGrowth += Time.deltaTime;
+            if (currentGrowth > 5f)
+            {
+                MeshRenderer.enabled = true; // make plant visible after 5 seconds, can be replaced with growth stages later
+            }
             yield return null; // wait one frame
         }
         Debug.Log("Plant has fully grown!");
-        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        transform.localScale = transform.localScale * 1.5f; // visually indicate growth, can be replaced with animation later
 
         _isGrowing = false;
     }

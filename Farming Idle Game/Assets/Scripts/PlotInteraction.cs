@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlotInteraction : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject PlantPrefab;
+    [SerializeField] private GameObject dirtMoundPrefab;
     private bool hasPlant = false;
     private PlantCycle plantCycle;
     UiManager uimanager;
 
     private bool playerInRange = false;
     private GameObject Plant;
+    private GameObject Dirt;
     private MoneyManager moneyManager;
 
     void Start()
@@ -34,7 +36,8 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         Debug.Log("Interacted with the plot!");
         if (!hasPlant)
         {
-            Plant = Instantiate(PlantPrefab, transform.position + Vector3.up, Quaternion.identity);
+            Dirt = Instantiate(dirtMoundPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+            Plant = Instantiate(PlantPrefab, transform.position + new Vector3(0, 0.4f, 0), Quaternion.identity);
             plantCycle = Plant.GetComponent<PlantCycle>();
             hasPlant = true;
         }
