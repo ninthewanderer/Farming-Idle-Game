@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This Script Manages permanent and temporary crop/seed traits
+// CAM TODO: move the tending device things to its own inventory class, this one is for registration only
 public class ResourceManager : MonoBehaviour
 {
     //add moneyManager from MoneyManager Script
@@ -42,48 +43,48 @@ public class ResourceManager : MonoBehaviour
     }
 
     // Plant tending device traits (watering can, fertilizer, sprinkler, etc.) Just using watering can for now
-    public class TendingDeviceDefinition
-    {
-        public string ToolName;
-        public float Level; // current upgrade level
-        public float ToolCost;
-        public string Description;
-        public float TimeReduction; // reduce grow timer by percentage when player uses tool on a plant
-        public TendingDeviceDefinition(string toolName, float level, float toolCost, string description, float timeReduction)
-        {
-            ToolName = toolName;
-            Level = level;
-            ToolCost = toolCost;
-            Description = description;
-            TimeReduction = timeReduction;
-        }
-    }
+    //public class TendingDeviceDefinition
+    //{
+    //    public string ToolName;
+    //    public float Level; // current upgrade level
+    //    public float ToolCost;
+    //    public string Description;
+    //    public float TimeReduction; // reduce grow timer by percentage when player uses tool on a plant
+    //    public TendingDeviceDefinition(string toolName, float level, float toolCost, string description, float timeReduction)
+    //    {
+    //        ToolName = toolName;
+    //        Level = level;
+    //        ToolCost = toolCost;
+    //        Description = description;
+    //        TimeReduction = timeReduction;
+    //    }
+    //}
 
     // Dictionaries to manage the registering of crops
     public Dictionary<string, CropDefinition> CropDefinitions = new Dictionary<string, CropDefinition>();
     public Dictionary<string, CropState> CropStates = new Dictionary<string, CropState>();
 
     // Dictionary to manage tending devices (watering can, etc.)
-    public Dictionary<string, TendingDeviceDefinition> TendingDeviceDefinitions = new Dictionary<string, TendingDeviceDefinition>();
+    public Dictionary<string, TendingDevice> TendingDevices = new Dictionary<string, TendingDevice>();
 
     void Start()
     {
         //reference to money manager script for selling/buying seeds and crops
         moneyManager = FindObjectOfType<MoneyManager>();
         // Register crops (I added random crops with random values as an example, feel free to change)
-        RegisterCrop("Carrot", 5f, 15f, 30f);
-        RegisterCrop("Potato", 10f, 30f, 60f);
-        RegisterCrop("Onion", 20f, 60f, 120f);
-        RegisterCrop("Lettuce", 25f, 120f, 240f);
+        //RegisterCrop("Carrot", 5f, 15f, 30f);
+        //RegisterCrop("Potato", 10f, 30f, 60f);
+        //RegisterCrop("Onion", 20f, 60f, 120f);
+        //RegisterCrop("Lettuce", 25f, 120f, 240f);
 
         // Temporary watering can, can change values freely
-        TendingDeviceDefinitions["Watering Can"] = new TendingDeviceDefinition("Watering Can", 1f, 5f, "A basic watering can.", 0.10f);
+        TendingDevices["Watering Can"] = new("Watering Can", 1f, 5f, "A basic watering can.", 0.10f);
 
         //Examples for calling these functions
-        BuySeeds("Carrot", 5);
-        PlantSeed("Potato");
-        HarvestCrop("Onion", 3);
-        SellCrop("Carrot", 3);
+       // BuySeeds("Carrot", 5);
+        //PlantSeed("Potato");
+        //HarvestCrop("Onion", 3);
+        //SellCrop("Carrot", 3);
     }
 
 
@@ -192,5 +193,11 @@ public class ResourceManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    // temp
+    public bool TendingDevicesIsEmpty()
+    {
+        return TendingDevices.Count == 0;
     }
 }

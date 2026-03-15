@@ -6,13 +6,19 @@ using TMPro;
 public class UiManager : MonoBehaviour
 {
     public TMP_Text text;
-    public double value;
+
+    private MoneyManager moneyManager;
 
     string[] suffixes = { "", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No" };
 
+    void Start()
+    {
+        moneyManager = FindObjectOfType<MoneyManager>();
+    }
+
     void Update()
     {
-        text.text = FormatNumber(value);
+        text.text = FormatNumber(moneyManager.GetMoney());
     }
 
     string FormatNumber(double num)
@@ -31,7 +37,7 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            return value.ToString("0.##e0");
+            return num.ToString("0.##e0");
         }
     }
 }
