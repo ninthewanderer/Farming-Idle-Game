@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+
+    public PlayerInventory inventory;
+
+    public Image seedIcon;
+    public TMP_Text seedName;
+    public TMP_Text seedAmount;
+
     public TMP_Text text;
 
     private MoneyManager moneyManager;
@@ -19,6 +27,7 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         text.text = FormatNumber(moneyManager.GetMoney());
+        UpdateSeedUI();
     }
 
     string FormatNumber(double num)
@@ -39,5 +48,23 @@ public class UiManager : MonoBehaviour
         {
             return num.ToString("0.##e0");
         }
+    }
+
+    void UpdateSeedUI()
+    {
+        SeedData seed = inventory.GetSelectedSeed();
+        if(seed==null)
+        {
+            seedName.text = "";
+            seedAmount.text = "";
+            seedIcon.enabled = false;
+            return;
+        }
+
+        InventorySlot slot = inventory.inventory[inventory.selectedIndex];
+        seedName.text = slot.seed.seedName;
+        seedIcon.sprite = seed.icon;
+        seedAmount.text = "X" + slot.quantity;
+        seedIcon.enabled = true;
     }
 }
