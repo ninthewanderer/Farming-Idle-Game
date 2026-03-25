@@ -581,6 +581,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4290b215a7d85754785949991e7c6dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  seedIcon: {fileID: 0}
+  seedName: {fileID: 0}
+  seedAmount: {fileID: 0}
   text: {fileID: 1113622289}
 --- !u!1001 &762188295
 PrefabInstance:
@@ -1318,6 +1322,10 @@ PrefabInstance:
     - target: {fileID: 6975567765927877365, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.8569468
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695736479874139302, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9000006
       objectReference: {fileID: 0}
     - target: {fileID: 9083765881953602115, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       propertyPath: m_Name
