@@ -89,18 +89,20 @@ public class PlayerInventory : MonoBehaviour
 
         if (slot.quantity <= 0)
         {
-            // Remove the slot
-            inventory.RemoveAt(selectedIndex);
+            int removedIndex = selectedIndex;
 
-            // If inventory is now empty
+            inventory.RemoveAt(removedIndex);
+
             if (inventory.Count == 0)
             {
                 selectedIndex = 0;
-                scrollFlag = true; // allow scrolling again later
+                scrollFlag = true;
                 return;
             }
 
-            // If we removed the last slot, wrap to start
+            // Move to the next seed that exists
+            selectedIndex = removedIndex;
+
             if (selectedIndex >= inventory.Count)
                 selectedIndex = 0;
         }
