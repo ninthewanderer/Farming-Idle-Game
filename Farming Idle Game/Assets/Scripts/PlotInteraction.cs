@@ -28,7 +28,8 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     {
         moneyManager = FindObjectOfType<MoneyManager>();
         if (playerInventory == null)
-            Debug.LogError("PlayerInventory reference missing on PlotInteraction!");
+            playerInventory = FindObjectOfType<PlayerInventory>();
+        Debug.LogError("PlayerInventory reference missing on PlotInteraction!");
     }
 
     void Update()
