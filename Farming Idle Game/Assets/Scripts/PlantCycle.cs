@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlantCycle : MonoBehaviour
 {
     private ResourceManager resourceManager;
 
+    [SerializeField] private ParticleSystem growthParticles;
     private bool _isGrowing = false;
     public bool isGrowing { get { return _isGrowing; } }
 
@@ -54,7 +56,15 @@ public class PlantCycle : MonoBehaviour
         _isGrowing = false;
         transform.localScale *= 1.5f; // visual indicator of full growth
     }
-
+    private void OnMouseDown()
+    {
+        Debug.Log("Play particle effect on plant interaction.");
+        if (isGrowing)
+        {
+            growthParticles.Play();
+            Debug.Log("Play particle effect on plant interaction.");
+        }
+    }   
     private void OnTriggerEnter(Collider other) => playerInRange = true;
     private void OnTriggerExit(Collider other) => playerInRange = false;
 }

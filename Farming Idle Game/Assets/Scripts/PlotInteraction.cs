@@ -67,6 +67,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         }
         else
         {
+
             Debug.Log("Plants are still growing!");
         }
     }
