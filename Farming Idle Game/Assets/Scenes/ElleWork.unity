@@ -740,7 +740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.8176794
+      value: -5.24
       objectReference: {fileID: 0}
     - target: {fileID: 4297733094655692484, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1265,19 +1265,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1962859178035959773, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92384475
+      value: 0.95963925
       objectReference: {fileID: 0}
     - target: {fileID: 1962859178035959773, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.38276735
-      objectReference: {fileID: 0}
-    - target: {fileID: 3119886367387015607, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.89361775
-      objectReference: {fileID: 0}
-    - target: {fileID: 3119886367387015607, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.44882885
+      value: 0.28123388
       objectReference: {fileID: 0}
     - target: {fileID: 5764514062328750757, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1319,20 +1311,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6975567765927877365, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8569468
-      objectReference: {fileID: 0}
-    - target: {fileID: 8695736479874139302, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.9000006
-      objectReference: {fileID: 0}
     - target: {fileID: 9083765881953602115, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083765881953602115, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
