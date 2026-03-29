@@ -17,6 +17,20 @@ public class PlantCycle : MonoBehaviour
     private Renderer meshRenderer;
     private bool playerInRange = false;
 
+    private float tendCooldown = 1f;
+    private float lastTendTime = -999f;
+
+    void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.Q))
+        {
+            if (Time.time >= lastTendTime + tendCooldown)
+            {
+                TendPlant(0.25f);
+                lastTendTime = Time.time;
+            }
+        }
+    }
     void OnEnable()
     {
         meshRenderer = GetComponent<Renderer>();
@@ -67,4 +81,16 @@ public class PlantCycle : MonoBehaviour
     }   
     private void OnTriggerEnter(Collider other) => playerInRange = true;
     private void OnTriggerExit(Collider other) => playerInRange = false;
+    public void TendPlant(float percentReduction)
+    {
+        if (!_isGrowing) return;
+
+        float remainingTime = growTime - currentGrowth;
+
+        float reductionAmount = remainingTime * percentReduction;
+
+        growTime -= reductionAmount;
+
+        Debug.Log("Plant tended! Reduced remaining time by " + (percentReduction * 100f) + "%");
+    }
 }
