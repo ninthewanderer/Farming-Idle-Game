@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TendingDevice : MonoBehaviour
+[CreateAssetMenu(fileName = "New Tending Device", menuName = "Tending Device")]
+public class TendingDevice : ScriptableObject
 {
     public string ToolName;
     public float Level; // current upgrade level/tier. 1-indexed, starts at 1

@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
 
         controls.Player.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => movement = Vector3.zero;
-
-        // trying out having inventory
-        resourceManager = FindObjectOfType<ResourceManager>();
     }
 
     private void Update()

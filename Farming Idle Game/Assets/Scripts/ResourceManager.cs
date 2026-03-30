@@ -42,23 +42,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    // Plant tending device traits (watering can, fertilizer, sprinkler, etc.) Just using watering can for now
-    //public class TendingDeviceDefinition
-    //{
-    //    public string ToolName;
-    //    public float Level; // current upgrade level
-    //    public float ToolCost;
-    //    public string Description;
-    //    public float TimeReduction; // reduce grow timer by percentage when player uses tool on a plant
-    //    public TendingDeviceDefinition(string toolName, float level, float toolCost, string description, float timeReduction)
-    //    {
-    //        ToolName = toolName;
-    //        Level = level;
-    //        ToolCost = toolCost;
-    //        Description = description;
-    //        TimeReduction = timeReduction;
-    //    }
-    //}
+
 
     // Dictionaries to manage the registering of crops
     public Dictionary<string, CropDefinition> CropDefinitions = new Dictionary<string, CropDefinition>();
@@ -70,7 +54,6 @@ public class ResourceManager : MonoBehaviour
     void Start()
     {
         //reference to money manager script for selling/buying seeds and crops
-        moneyManager = FindObjectOfType<MoneyManager>();
         // Register crops (I added random crops with random values as an example, feel free to change)
         //RegisterCrop("Carrot", 5f, 15f, 30f);
         //RegisterCrop("Potato", 10f, 30f, 60f);
@@ -193,11 +176,5 @@ public class ResourceManager : MonoBehaviour
         }
 
         return false;
-    }
-
-    // temp
-    public bool TendingDevicesIsEmpty()
-    {
-        return TendingDevices.Count == 0;
     }
 }

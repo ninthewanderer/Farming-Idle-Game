@@ -21,10 +21,6 @@ public class ShopManager : MonoBehaviour
 
     void Awake()
     {
-        resourceManager = FindObjectOfType<ResourceManager>();
-        moneyManager = FindObjectOfType<MoneyManager>();
-        playerController = FindObjectOfType<PlayerController>();
-
         RegisterUpgrades();
     }
 

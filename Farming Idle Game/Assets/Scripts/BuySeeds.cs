@@ -11,7 +11,9 @@ public class BuySeeds : MonoBehaviour
     public SeedData carrotSeed;
     public SeedData tomatoSeed;
     public SeedData potatoSeed;
-
+    // Watering can asset, temp
+    public TendingDevice wateringCan;
+     
     // Generic buy function using the asset's own price
     public void BuySeed(SeedData seed)
     {
@@ -31,4 +33,8 @@ public class BuySeeds : MonoBehaviour
     public void BuyCarrotSeed() => BuySeed(carrotSeed);
     public void BuyTomatoSeed() => BuySeed(tomatoSeed);
     public void BuyPotatoSeed() => BuySeed(potatoSeed);
+
+
+    // Temp generic function to buy watering can
+
 }
