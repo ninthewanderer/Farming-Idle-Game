@@ -27,12 +27,37 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    // Add tool to inventory
+    public void addTool(TendingDevice tool, int level)
+    {
+        inventory.Add(new InventorySlot(tool, level));
+    }
+
     public SeedData GetSelectedSeed()
     {
         if (inventory.Count == 0 || selectedIndex < 0 || selectedIndex >= inventory.Count)
             return null;
 
         return inventory[selectedIndex].seed;
+    }
+
+    public TendingDevice GetSelectedTool()
+    {
+        if (inventory.Count == 0 || selectedIndex < 0 || selectedIndex >= inventory.Count)
+            return null;
+        return inventory[selectedIndex].device;
+    }
+
+    public bool containsTool(TendingDevice device)
+    {
+        foreach (InventorySlot slot in inventory)
+        {
+            if (slot.device == device)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void selectNext()

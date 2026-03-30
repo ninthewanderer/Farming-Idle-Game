@@ -60,8 +60,6 @@ public class ResourceManager : MonoBehaviour
         //RegisterCrop("Onion", 20f, 60f, 120f);
         //RegisterCrop("Lettuce", 25f, 120f, 240f);
 
-        // Temporary watering can, can change values freely
-        TendingDevices["Watering Can"] = new("Watering Can", 1f, 5f, "A basic watering can.", 0.10f);
 
         //Examples for calling these functions
        // BuySeeds("Carrot", 5);

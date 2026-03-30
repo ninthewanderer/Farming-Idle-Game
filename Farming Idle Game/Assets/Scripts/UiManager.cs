@@ -9,6 +9,7 @@ public class UiManager : MonoBehaviour
 
     public PlayerInventory inventory;
 
+    // Seeds
     public Image seedIcon;
     public TMP_Text seedName;
     public TMP_Text seedAmount;
@@ -53,7 +54,9 @@ public class UiManager : MonoBehaviour
     void UpdateSeedUI()
     {
         SeedData seed = inventory.GetSelectedSeed();
-        if(seed==null)
+        TendingDevice device = inventory.GetSelectedTool();
+
+        if (seed==null && device==null)
         {
             seedName.text = "";
             seedAmount.text = "";
@@ -62,9 +65,22 @@ public class UiManager : MonoBehaviour
         }
 
         InventorySlot slot = inventory.inventory[inventory.selectedIndex];
-        seedName.text = slot.seed.seedName;
-        seedIcon.sprite = seed.icon;
-        seedAmount.text = "X" + slot.quantity;
-        seedIcon.enabled = true;
+        // If the slot has a tool
+        if (seed==null && device!=null)
+        {
+            seedName.text = device.ToolName;
+            seedIcon.sprite = device.icon;
+            seedAmount.text = "Level " + device.Level;
+            seedIcon.enabled = true;
+        }
+        // Else if the slot has a seed
+        else
+        {
+            seedName.text = slot.seed.seedName;
+            seedIcon.sprite = seed.icon;
+            seedAmount.text = "X" + slot.quantity;
+            seedIcon.enabled = true;
+        }
+
     }
 }
