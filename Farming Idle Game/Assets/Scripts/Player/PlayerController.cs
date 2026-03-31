@@ -3,24 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Commented out a whole bunch of the old code because it's not working with the new camera unfortunately. 
+/* Commented out a whole bunch of the old code because it's not working with the new camera and it's too complicated
+ for me to debug TBH. */
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController playerController;
     // private PlayerControls controls;
     // private Vector3 movement;
-    [SerializeField] private float _moveSpeed = 6f;
     // [SerializeField] private float _turnSmoothTime = 0.1f;
     // private float _turnSmoothVelocity;
+    
     private ResourceManager resourceManager;
-
+    private CharacterController playerController;
+    [SerializeField] private float _moveSpeed = 6f;
+    [SerializeField] private float turnSpeed;
     private Vector2 input;
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 targetDirection;
     private Quaternion freeRotation;
-    [SerializeField] private float turnSpeed;
-
 
     // Gets the necessary components and uses the PlayerControls class to handle player movement.
     private void Awake()
