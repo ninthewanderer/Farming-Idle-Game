@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 targetDirection;
     private Quaternion freeRotation;
+    
+    // Variable for ensuring gravity still affects the player (necessary because of sloped bridges).
+    [SerializeField] private float gravity = 20f;
 
     // Gets the necessary components and uses the PlayerControls class to handle player movement.
     private void Awake()
@@ -22,8 +25,8 @@ public class PlayerController : MonoBehaviour
         playerController = GetComponent<CharacterController>();
 
         // Locks cursor (can be changed later)
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     private void Update()
@@ -40,10 +43,12 @@ public class PlayerController : MonoBehaviour
         float move = vertical + horizontal;
         
         // Determines the forward direction of the player and uses it to determine movement direction.
+        float moveDirectionY = moveDirection.y;
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         moveDirection = forward * move;
         moveDirection.Normalize();
         moveDirection *= _moveSpeed;
+        
         
         // Calculates the direction the player will be moving in based on the camera's position.
         UpdateTargetDirection();
@@ -67,7 +72,13 @@ public class PlayerController : MonoBehaviour
         // Moves the player as long as there is input.
         if (input != Vector2.zero)
         {
+            moveDirection.y = moveDirectionY;
             playerController.Move(moveDirection * Time.deltaTime);
+        }
+
+        if (!playerController.isGrounded)
+        {
+            moveDirection.y -= gravity * Time.deltaTime;
         }
     }
 
