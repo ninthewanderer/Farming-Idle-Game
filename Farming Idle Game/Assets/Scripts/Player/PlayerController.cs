@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetDirection;
     private Quaternion freeRotation;
     
+    
     // Variable for ensuring gravity still affects the player (necessary because of sloped bridges).
     [SerializeField] private float gravity = 20f;
+    
+    [SerializeField] private Animator animator;
 
     // Gets the necessary components and uses the PlayerControls class to handle player movement.
     private void Awake()
@@ -27,6 +30,8 @@ public class PlayerController : MonoBehaviour
         // Locks cursor (can be changed later)
         // Cursor.lockState = CursorLockMode.Locked;
         // Cursor.visible = false;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -79,6 +84,17 @@ public class PlayerController : MonoBehaviour
         if (!playerController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
+        }
+
+        float rawHorizontal = Input.GetAxisRaw("Horizontal");
+        float rawVertical = Input.GetAxisRaw("Vertical");
+        if(rawHorizontal != 0 || rawVertical != 0)
+        {
+            animator.SetFloat("Speed", 1f);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0f);
         }
     }
 
