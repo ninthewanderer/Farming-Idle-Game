@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class shopToggle : MonoBehaviour
 {
-    private GameObject seedShopUI;
-    void Start()
-    {
-        seedShopUI = GameObject.Find("SeedShopUI");
-        seedShopUI.SetActive(false);
-    }
+    public CanvasGroup seedShopUI;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            seedShopUI.SetActive(!seedShopUI.activeSelf);
+            seedShopUI.gameObject.SetActive(!seedShopUI.gameObject.activeSelf);
         }
     }
 }
