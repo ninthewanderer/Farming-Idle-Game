@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,11 @@ public class PlotSign : MonoBehaviour
     public float plotCost = 500f; //set to increase in cost by 500 for every sign bought
 
     private MoneyManager moneyManager;
+    
+    // Lab 13 delegate & event system setup
+    private delegate void IncreaseSigns();
+    private IncreaseSigns signDelegate;
+    private event Action SignEvent;
 
     // Keep track of all signs in the scene (to increase their prices when one is bought)
     private static List<PlotSign> allSigns = new List<PlotSign>();
@@ -17,6 +23,9 @@ public class PlotSign : MonoBehaviour
     private void Awake()
     {
         allSigns.Add(this); // Register this sign
+        
+        // Subscribes to the sign event.
+        SignEvent += IncreaseOtherSignPrices;
     }
 
     private void OnDestroy()
@@ -49,21 +58,30 @@ public class PlotSign : MonoBehaviour
         }
     }
 
+    // Commented out old code.
     private void TryBuyPlots()
     {
         if (moneyManager != null)
         {
-            if (moneyManager.CanAfford(plotCost))
-            {
-                moneyManager.SpendMoney(plotCost);
-                SpawnPlots();
-                Destroy(gameObject);
-                IncreaseOtherSignPrices();
-            }
-            else
-            {
-                Debug.Log("Not enough money to buy plots!");
-            }
+            //if (moneyManager.CanAfford(plotCost))
+            //{
+                try
+                {
+                    SignEvent?.Invoke();
+                    moneyManager.SpendMoney(plotCost);
+                    SpawnPlots();
+                    Destroy(gameObject);
+                    //IncreaseOtherSignPrices();
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e.Message);
+                }
+            //}
+            //else
+            //{
+                //Debug.Log("Not enough money to buy plots!");
+            //}
         }
     }
 
@@ -83,6 +101,12 @@ public class PlotSign : MonoBehaviour
 
     private void IncreaseOtherSignPrices()
     {
+        // The check for affording is now done here so that the error can be handled using a try-catch in TryBuyPlots().
+        if (!moneyManager.CanAfford(plotCost))
+        {
+            throw new Exception("Not enough money to buy plots!");
+        }
+        
         foreach (PlotSign sign in allSigns)
         {
             

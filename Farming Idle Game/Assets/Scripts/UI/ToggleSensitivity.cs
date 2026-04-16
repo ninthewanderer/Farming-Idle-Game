@@ -28,6 +28,7 @@ public class ToggleSensitivity : MonoBehaviour
 
         // Ensures camera sensitivity always starts at the minimum value set in sensitivitySlider.
         cameraSensitivity = (int)sensitivitySlider.minValue;
+        SensitivityEvent?.Invoke(cameraSensitivity);
     }
     
     void Update()

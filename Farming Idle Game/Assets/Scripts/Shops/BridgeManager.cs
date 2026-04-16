@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,20 @@ public class BridgeManager : MonoBehaviour
 
     private MoneyManager moneyManager;
     private GameObject player;
+    
+    // Lab 13 delegate & event system setup
+    private delegate void IncreaseBridges();
+    private IncreaseBridges bridgeDelegate;
+    private event Action BridgeEvent;
 
     private static List<BridgeManager> allBridges = new List<BridgeManager>();
 
     private void Awake()
     {
         allBridges.Add(this);
+        
+        // Subscribes to the bridge event.
+        BridgeEvent += IncreaseOtherBridgePrices;
     }
 
     private void OnDestroy()
@@ -58,17 +67,25 @@ public class BridgeManager : MonoBehaviour
     {
         if (moneyManager != null)
         {
-            if (moneyManager.CanAfford(BridgeCost))
-            {
-                moneyManager.SpendMoney(BridgeCost);
-                EnableBridge();
-                Destroy(gameObject);
-                IncreaseOtherBridgePrices();
-            }
-            else
-            {
-                Debug.Log("Not enough money to buy bridge!");
-            }
+            // if (moneyManager.CanAfford(BridgeCost))
+            // {
+                try
+                {
+                    BridgeEvent?.Invoke();
+                    moneyManager.SpendMoney(BridgeCost);
+                    EnableBridge();
+                    Destroy(gameObject);
+                    // IncreaseOtherBridgePrices();
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e.Message);
+                }
+            // }
+            // else
+            // {
+            //     Debug.Log("Not enough money to buy bridge!");
+            // }
         }
     }
 
@@ -82,6 +99,12 @@ public class BridgeManager : MonoBehaviour
 
     private void IncreaseOtherBridgePrices()
     {
+        // The check for affording is now done here so that the error can be handled using a try-catch in TryBuyBridge().
+        if (!moneyManager.CanAfford(BridgeCost))
+        {
+            throw new Exception("Not enough money to buy bridge!");
+        }
+        
         foreach (BridgeManager sign in allBridges)
         {
             if (sign != this)
