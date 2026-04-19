@@ -11,7 +11,16 @@ public class BuySeeds : MonoBehaviour
     public SeedData carrotSeed;
     public SeedData tomatoSeed;
     public SeedData potatoSeed;
-     
+    public SeedData watermelonSeed;
+    public SeedData blueberrySeed;
+    public SeedData strawberrySeed;
+    public SeedData turnipSeed;
+    public SeedData bellpepperSeed;
+    public SeedData spinachSeed;
+    public SeedData onionSeed;
+    public SeedData cornSeed;
+    public SeedData lettuceSeed;
+
     // Generic buy function using the asset's own price
     public void BuySeed(SeedData seed)
     {
@@ -31,4 +40,13 @@ public class BuySeeds : MonoBehaviour
     public void BuyCarrotSeed() => BuySeed(carrotSeed);
     public void BuyTomatoSeed() => BuySeed(tomatoSeed);
     public void BuyPotatoSeed() => BuySeed(potatoSeed);
+    public void BuyWatermelonSeed() => BuySeed(watermelonSeed);
+    public void BuyBlueberrySeed() => BuySeed(blueberrySeed);
+    public void BuyStrawberrySeed() => BuySeed(strawberrySeed);
+    public void BuyTurnipSeed() => BuySeed(turnipSeed);
+    public void BuyBellpepperSeed() => BuySeed(bellpepperSeed);
+    public void BuySpinachSeed() => BuySeed(spinachSeed);
+    public void BuyOnionSeed() => BuySeed(onionSeed);
+    public void BuyCornSeed() => BuySeed(cornSeed);
+    public void BuyLettuceSeed() => BuySeed(lettuceSeed);
 }

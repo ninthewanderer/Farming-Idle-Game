@@ -15,6 +15,6 @@ MonoBehaviour:
   seedName: Carrot
   plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
   growTime: 5
-  icon: {fileID: 21300000, guid: 58a6159024716e145be4e41b9665af50, type: 3}
+  icon: {fileID: 21300000, guid: 246a057957c080d42a3af5c4272662f5, type: 3}
   price: 5
   sellPrice: 15

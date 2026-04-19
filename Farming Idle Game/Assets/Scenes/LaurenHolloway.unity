@@ -7812,7 +7812,7 @@ GameObject:
   - component: {fileID: 636787793}
   - component: {fileID: 636787794}
   m_Layer: 5
-  m_Name: UI
+  m_Name: canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9976,6 +9976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824599044}
   - component: {fileID: 824599045}
+  - component: {fileID: 824599046}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10027,6 +10028,18 @@ MonoBehaviour:
     level: 0
   selectedIndex: 0
   scrollFlag: 0
+--- !u!114 &824599046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824599042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10a16048576a474fbf97d2977d10140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &848017015
 GameObject:
   m_ObjectHideFlags: 0
@@ -21601,6 +21614,15 @@ MonoBehaviour:
   carrotSeed: {fileID: 11400000, guid: 20b82837dafdec345be07b5c87d95922, type: 2}
   tomatoSeed: {fileID: 11400000, guid: 87823b776b2f9ce4b9d32e4687286e1d, type: 2}
   potatoSeed: {fileID: 11400000, guid: 78c56521d623cc34ba581fa2750c07a4, type: 2}
+  watermelonSeed: {fileID: 0}
+  blueberrySeed: {fileID: 0}
+  strawberrySeed: {fileID: 0}
+  turnipSeed: {fileID: 0}
+  bellpepperSeed: {fileID: 0}
+  spinachSeed: {fileID: 0}
+  onionSeed: {fileID: 0}
+  cornSeed: {fileID: 0}
+  lettuceSeed: {fileID: 0}
 --- !u!114 &1684954274
 MonoBehaviour:
   m_ObjectHideFlags: 0
