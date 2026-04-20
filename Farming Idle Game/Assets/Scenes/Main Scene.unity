@@ -5445,10 +5445,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc261cb7d1d4d545ac6316ad736c076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolUpgrades: {fileID: -833133662581451096, guid: d8478fcb03be99a42af011cb1865efaf, type: 3}
-  speedUpgrades: {fileID: 1851610920352478920, guid: 108f2897d9ed7c84c8bbd842e15c09c6, type: 3}
+  toolUpgrades:
+    UpgradeName: 
+    UpgradeCost: 0
+    Description: 
+    Level: 0
+    State: 0
+    tendingDevice: {fileID: 0}
+  speedUpgrades:
+    UpgradeName: 
+    UpgradeCost: 0
+    Description: 
+    Level: 0
+    State: 0
   playerMoney: {fileID: 48076658}
   inventory: {fileID: 824599045}
+  upgradeShop: {fileID: 0}
 --- !u!1 &401609008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6406,6 +6418,7 @@ GameObject:
   - component: {fileID: 450618933}
   - component: {fileID: 450618932}
   - component: {fileID: 450618931}
+  - component: {fileID: 450618935}
   m_Layer: 0
   m_Name: Upgrade Shop
   m_TagString: Untagged
@@ -6499,6 +6512,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1117082325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &450618935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450618930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1.5}
+  m_Center: {x: -0.00000023841858, y: 0, z: -0.25}
 --- !u!1 &453566945
 GameObject:
   m_ObjectHideFlags: 0
@@ -23174,7 +23208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1684954272
 RectTransform:
   m_ObjectHideFlags: 0
