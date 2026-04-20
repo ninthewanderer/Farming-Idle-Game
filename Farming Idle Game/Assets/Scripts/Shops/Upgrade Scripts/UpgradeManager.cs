@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class UpgradeManager : MonoBehaviour
+public class UpgradeManager : MonoBehaviour, IInteractable
 {
     // Dictionary with upgrade type name and lists of upgrades
     public Dictionary<string, List<Upgrade>> upgradesDictionary = new Dictionary<string, List<Upgrade>>();
@@ -17,6 +17,11 @@ public class UpgradeManager : MonoBehaviour
 
     // Inventory
     public PlayerInventory inventory;
+
+
+    // Shop interaction
+    [SerializeField] private GameObject upgradeShop;
+    private bool playerInRange = false;
 
 
 
@@ -36,5 +41,34 @@ public class UpgradeManager : MonoBehaviour
     {
         // TODO: purchase logic, add event to update upgrades list after purchase
         //      ^ same with buying tool
+    }
+
+    public void Interact()
+    {
+        // Open upgrade shop UI
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
+
+    public string GetInteractPrompt()
+    {
+        //temp
+        return null;
     }
 }

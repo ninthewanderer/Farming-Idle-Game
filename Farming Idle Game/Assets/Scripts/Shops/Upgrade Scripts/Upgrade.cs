@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public abstract class Upgrade : MonoBehaviour
+[Serializable]
+public abstract class Upgrade
 {
     public enum UpgradeState
     {

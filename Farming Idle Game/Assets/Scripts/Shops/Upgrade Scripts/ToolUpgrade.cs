@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
 
+[System.Serializable]
 public class ToolUpgrade : Upgrade
 {
     // Using MoneyManager for all money related operations
