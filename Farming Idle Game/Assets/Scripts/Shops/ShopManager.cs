@@ -29,21 +29,7 @@ public class ShopManager : MonoBehaviour
 
     void RegisterUpgrades()
     {
-        // Temp watering can test upgrades, just 3 for now.
-        List<ToolUpgrade> wateringCanUpgrades = new List<ToolUpgrade>()
-        {
-            new("Watering Can Level 1", 25f, "A basic watering can.", 1f, Upgrade.UpgradeState.Locked),
-            new("Watering Can Level 2", 50f, "Increases watering can level to 2.", 2f, Upgrade.UpgradeState.Locked),
-            new("Watering Can Level 3", 100f, "Increases watering can level to 3.", 3f, Upgrade.UpgradeState.Locked)
-        };
-
-        ToolUpgrades["Watering Can"] = wateringCanUpgrades;
-
-        foreach(ToolUpgrade upgrade in wateringCanUpgrades)
-        {
-            upgrade.State = upgrade.CheckUpgrade(resourceManager.TendingDevices["Watering Can"]);
-            Debug.Log($"{upgrade.UpgradeName} state: {upgrade.State}");
-        }
+        
 
         // TODO: Player speed upgrades, increase speed by percentage
 

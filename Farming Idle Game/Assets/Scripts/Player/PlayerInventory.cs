@@ -48,6 +48,18 @@ public class PlayerInventory : MonoBehaviour
         return inventory[selectedIndex].device;
     }
 
+    public TendingDevice GetToolByName(string toolName)
+    {
+        foreach (InventorySlot slot in inventory)
+        {
+            if (slot.device != null && slot.device.ToolName == toolName)
+            {
+                return slot.device;
+            }
+        }
+        return null;
+    }
+
     public bool containsTool(TendingDevice device)
     {
         foreach (InventorySlot slot in inventory)

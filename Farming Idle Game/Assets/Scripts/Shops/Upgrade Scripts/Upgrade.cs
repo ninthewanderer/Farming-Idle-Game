@@ -28,9 +28,11 @@ public abstract class Upgrade : MonoBehaviour
     }
 
     // implement methods to change state of upgrade
-    public abstract void UnlockUpgrade();
+    //public abstract void UnlockUpgrade();
 
-    public abstract void PurchaseUpgrade();
+    //public abstract void PurchaseUpgrade();
 
-    public abstract void LockUpgrade();
+    //public abstract void LockUpgrade();
+
+    public abstract void LoadUpgrades(UpgradeManager upgradeManager);
 }

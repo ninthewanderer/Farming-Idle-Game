@@ -11,14 +11,4 @@ public class TendingDevice : ScriptableObject
     public string Description;
     public float TimeReduction; // reduce grow timer by percentage when player uses tool on a plant
     public Sprite icon;
-
-
-    //public TendingDevice(string toolName, float level, float toolCost, string description, float timeReduction)
-    //{
-    //    ToolName = toolName;
-    //    Level = level;
-    //    ToolCost = toolCost;
-    //    Description = description;
-    //    TimeReduction = timeReduction;
-    //}
 }

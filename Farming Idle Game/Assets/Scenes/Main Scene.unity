@@ -5397,6 +5397,58 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397602655}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &401268438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401268439}
+  - component: {fileID: 401268440}
+  m_Layer: 5
+  m_Name: UpgradeShopUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &401268439
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401268438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 636787792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &401268440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401268438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc261cb7d1d4d545ac6316ad736c076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolUpgrades: {fileID: -833133662581451096, guid: d8478fcb03be99a42af011cb1865efaf, type: 3}
+  speedUpgrades: {fileID: 1851610920352478920, guid: 108f2897d9ed7c84c8bbd842e15c09c6, type: 3}
+  playerMoney: {fileID: 48076658}
+  inventory: {fileID: 824599045}
 --- !u!1 &401609008
 GameObject:
   m_ObjectHideFlags: 0
@@ -8341,6 +8393,7 @@ RectTransform:
   - {fileID: 1684954272}
   - {fileID: 1113622291}
   - {fileID: 1584513682}
+  - {fileID: 401268439}
   m_Father: {fileID: 1661133690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23166,6 +23219,15 @@ MonoBehaviour:
   carrotSeed: {fileID: 11400000, guid: 20b82837dafdec345be07b5c87d95922, type: 2}
   tomatoSeed: {fileID: 11400000, guid: 87823b776b2f9ce4b9d32e4687286e1d, type: 2}
   potatoSeed: {fileID: 11400000, guid: 78c56521d623cc34ba581fa2750c07a4, type: 2}
+  watermelonSeed: {fileID: 0}
+  blueberrySeed: {fileID: 0}
+  strawberrySeed: {fileID: 0}
+  turnipSeed: {fileID: 0}
+  bellpepperSeed: {fileID: 0}
+  spinachSeed: {fileID: 0}
+  onionSeed: {fileID: 0}
+  cornSeed: {fileID: 0}
+  lettuceSeed: {fileID: 0}
 --- !u!114 &1684954274
 MonoBehaviour:
   m_ObjectHideFlags: 0
