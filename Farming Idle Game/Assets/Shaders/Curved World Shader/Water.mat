@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: -6465566751694194690, guid: 32054d564f80f0246a1a7a87861d0f7b, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Shader: {fileID: -6465566751694194690, guid: 2a6b13d59bb2b2242bb5f2e23d296027, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 2a6b13d59bb2b2242bb5f2e23d296027, type: 3}
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -22,39 +22,20 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _Texture2D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TextureMetallic:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TextureNormal:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
     - _CurveStrength: -0.001
     - _QueueControl: 0
-    - _QueueOffset: 0
     - _TilingScale: 1
+    - _WaterDepth: 2.07
+    - _specular_size: -25.73
+    - _specular_thickness: 3.49
     m_Colors:
-    - _TextureColor: {r: 0.3693485, g: 0.65749794, b: 0.9433962, a: 0}
+    - _Deep_Color: {r: 0.23616058, g: 0.55997986, b: 0.5754717, a: 0}
+    - _Shadow_Color: {r: 0.6697223, g: 0.79143333, b: 0.8113208, a: 0}
+    - _TextureColor: {r: 1, g: 1, b: 1, a: 0}
+    - _specular_color: {r: 0.5133945, g: 0.7113999, b: 0.7830189, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2215793697057677330
 MonoBehaviour:
