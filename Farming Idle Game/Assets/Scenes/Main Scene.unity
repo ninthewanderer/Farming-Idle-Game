@@ -1130,7 +1130,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 108852364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401268438}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &108852364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3258,13 +3270,14 @@ GameObject:
   m_Component:
   - component: {fileID: 401268439}
   - component: {fileID: 401268440}
+  - component: {fileID: 401268441}
   m_Layer: 5
   m_Name: UpgradeShopUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &401268439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3307,7 +3320,7 @@ MonoBehaviour:
     Description: 
     Level: 0
     State: 0
-    tendingDevice: {fileID: 0}
+    TendingDevice: {fileID: 0}
   speedUpgrades:
     UpgradeName: 
     UpgradeCost: 0
@@ -3317,6 +3330,24 @@ MonoBehaviour:
   playerMoney: {fileID: 48076658}
   inventory: {fileID: 824599045}
   upgradeShop: {fileID: 450618930}
+  toolUpgradeOne: {fileID: 108852363}
+  toolUpgradeTwo: {fileID: 1136750425}
+  toolUpgradeThree: {fileID: 1522720635}
+  speedUpgradeOne: {fileID: 849699651}
+  speedUpgradeTwo: {fileID: 1239015128}
+  speedUpgradeThree: {fileID: 591230972}
+--- !u!225 &401268441
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401268438}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &427204133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3790,6 +3821,7 @@ GameObject:
   - component: {fileID: 450618932}
   - component: {fileID: 450618931}
   - component: {fileID: 450618935}
+  - component: {fileID: 450618936}
   m_Layer: 0
   m_Name: Upgrade Shop
   m_TagString: Untagged
@@ -3902,8 +3934,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.5}
-  m_Center: {x: -0.00000023841858, y: 0, z: -0.25}
+  m_Size: {x: 1, y: 1, z: 1.75}
+  m_Center: {x: -0.00000023841858, y: 0, z: -0.37}
+--- !u!114 &450618936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450618930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed65ec900621c242b3917f34c478bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceManager: {fileID: 0}
+  moneyManager: {fileID: 0}
+  playerController: {fileID: 0}
+  shopUI: {fileID: 401268441}
 --- !u!4 &489759687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8379968072066342476, guid: 21a7dfb9561f98f45af1a9266ec4efc9, type: 3}
@@ -8625,6 +8673,8 @@ GameObject:
   - component: {fileID: 1122761490}
   - component: {fileID: 1122761489}
   - component: {fileID: 1122761488}
+  - component: {fileID: 1122761493}
+  - component: {fileID: 1122761492}
   m_Layer: 0
   m_Name: Seed Shop
   m_TagString: Untagged
@@ -8718,6 +8768,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1117082325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1122761492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122761487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed65ec900621c242b3917f34c478bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceManager: {fileID: 0}
+  moneyManager: {fileID: 0}
+  playerController: {fileID: 0}
+  shopUI: {fileID: 1684954275}
+--- !u!65 &1122761493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122761487}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1.75}
+  m_Center: {x: -0.00000023841858, y: 0, z: -0.37}
 --- !u!1001 &1126908362
 PrefabInstance:
   m_ObjectHideFlags: 0
