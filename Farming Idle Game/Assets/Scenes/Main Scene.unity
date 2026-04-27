@@ -3329,6 +3329,7 @@ MonoBehaviour:
     State: 0
   playerMoney: {fileID: 48076658}
   inventory: {fileID: 824599045}
+  buyTools: {fileID: 0}
   upgradeShop: {fileID: 450618930}
   toolUpgradeOne: {fileID: 108852363}
   toolUpgradeTwo: {fileID: 1136750425}
@@ -18321,15 +18322,15 @@ MonoBehaviour:
   carrotSeed: {fileID: 11400000, guid: 20b82837dafdec345be07b5c87d95922, type: 2}
   tomatoSeed: {fileID: 11400000, guid: 87823b776b2f9ce4b9d32e4687286e1d, type: 2}
   potatoSeed: {fileID: 11400000, guid: 78c56521d623cc34ba581fa2750c07a4, type: 2}
-  watermelonSeed: {fileID: 0}
-  blueberrySeed: {fileID: 0}
-  strawberrySeed: {fileID: 0}
-  turnipSeed: {fileID: 0}
-  bellpepperSeed: {fileID: 0}
-  spinachSeed: {fileID: 0}
-  onionSeed: {fileID: 0}
-  cornSeed: {fileID: 0}
-  lettuceSeed: {fileID: 0}
+  watermelonSeed: {fileID: 11400000, guid: 55e2c1e8bea2eba4fa8b0abb9f6170b1, type: 2}
+  blueberrySeed: {fileID: 11400000, guid: 1500ac5515543204ab5a77b3412d9532, type: 2}
+  strawberrySeed: {fileID: 11400000, guid: 651784283751e1640a35906ec7fd6344, type: 2}
+  turnipSeed: {fileID: 11400000, guid: e8a1b36737da2f348b42f2fed85c384a, type: 2}
+  bellpepperSeed: {fileID: 11400000, guid: 197a481f08ccd7847ad4510cc83ace06, type: 2}
+  spinachSeed: {fileID: 11400000, guid: eeedb61fa13466d459e93bf834b46059, type: 2}
+  onionSeed: {fileID: 11400000, guid: d7d83fa77ca284649bcce18273f0028e, type: 2}
+  cornSeed: {fileID: 11400000, guid: 01c8a82f884c6dc4ca54c40968445eec, type: 2}
+  lettuceSeed: {fileID: 11400000, guid: a74322a128958e44c80de97e89f0ccbe, type: 2}
 --- !u!114 &1684954274
 MonoBehaviour:
   m_ObjectHideFlags: 0

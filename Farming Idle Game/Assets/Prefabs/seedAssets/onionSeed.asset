@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f2ac19f663fc44092c1f637050212b, type: 3}
   m_Name: onionSeed
   m_EditorClassIdentifier: 
-  seedName: Tomato
+  seedName: Onion
   plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
   growTime: 2
   icon: {fileID: 21300000, guid: 380280f178e885b4bbd411580b2d0b82, type: 3}

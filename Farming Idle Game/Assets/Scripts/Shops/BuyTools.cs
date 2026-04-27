@@ -8,7 +8,11 @@ public class BuyTools : MonoBehaviour
     public MoneyManager playerMoney;
 
     // Drag the tool assets here
-    public TendingDevice wateringCan; 
+    public TendingDevice wateringCan;
+
+    // event
+    public delegate void DevicePurchased(TendingDevice device);
+    public event DevicePurchased purchaseDevice;
 
 
     // Generic function to buy tool
@@ -25,8 +29,10 @@ public class BuyTools : MonoBehaviour
             return;
         }
         playerMoney.SpendMoney(device.ToolCost);
-        inventory.addTool(device, 1);
+        inventory.addTool(device, 0);
         Debug.Log("Bought " + device.ToolName);
+
+        purchaseDevice?.Invoke(device);
     }
 
     // Wrapper functions

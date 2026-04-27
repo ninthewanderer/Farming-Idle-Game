@@ -20,7 +20,7 @@ public class SpeedUpgrade : Upgrade
     {
         int currentLevel = PlayerPrefs.GetInt("SpeedUpgradeLevel", 0);
 
-        if (State == UpgradeState.Purchased)
+        if (currentLevel >= Level)
         {
             return UpgradeState.Purchased;
         }

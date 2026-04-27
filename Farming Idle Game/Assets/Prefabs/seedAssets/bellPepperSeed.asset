@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f2ac19f663fc44092c1f637050212b, type: 3}
-  m_Name: pepperSeed
+  m_Name: bellPepperSeed
   m_EditorClassIdentifier: 
-  seedName: Tomato
+  seedName: Bell Pepper
   plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
   growTime: 2
   icon: {fileID: 21300000, guid: 521729e0423d3d0479b556fd0a62073c, type: 3}

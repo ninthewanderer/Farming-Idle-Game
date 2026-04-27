@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f2ac19f663fc44092c1f637050212b, type: 3}
   m_Name: spinachSeed
   m_EditorClassIdentifier: 
-  seedName: Tomato
+  seedName: Spinach
   plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
   growTime: 2
   icon: {fileID: 21300000, guid: b042f463a8747cb478ad5014dac6f8dd, type: 3}

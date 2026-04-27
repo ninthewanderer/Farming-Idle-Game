@@ -18,6 +18,7 @@ public class UpgradeManager : MonoBehaviour
 
     // Inventory
     public PlayerInventory inventory;
+    public BuyTools buyTools;
 
 
     // Shop interaction
@@ -37,6 +38,12 @@ public class UpgradeManager : MonoBehaviour
     void Start()
     {
         LoadUpgrades();
+
+        // subscribe to buy tool event
+        GameObject seedShop = GameObject.Find("SeedShopUI");
+        buyTools = seedShop.GetComponent<BuyTools>();
+        buyTools.purchaseDevice += HandleToolPurchase;
+
         // adding listeners for button clicks
         toolUpgradeOne.onClick.AddListener(() => PurchaseToolUpgrade((ToolUpgrade)upgradesDictionary["Watering Can"][0]));
         toolUpgradeTwo.onClick.AddListener(() => PurchaseToolUpgrade((ToolUpgrade)upgradesDictionary["Watering Can"][1]));
@@ -53,6 +60,15 @@ public class UpgradeManager : MonoBehaviour
         toolUpgrades.LoadUpgrades(this);
     }
 
+    public void HandleToolPurchase(TendingDevice device)
+    {
+        foreach(ToolUpgrade upgrade in upgradesDictionary["Watering Can"])
+        {
+            upgrade.TendingDevice = device;
+            Debug.Log("Updated " + upgrade.UpgradeName + " with new " + device.ToolName);
+        }
+    }
+
     public void PurchaseSpeedUpgrade(SpeedUpgrade upgrade)
     {
         // TODO: purchase logic, add event to update upgrades list after purchase
@@ -62,11 +78,17 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("Not enough money to purchase " + upgrade.UpgradeName);
             return;
         }
+        else if (upgrade.State == Upgrade.UpgradeState.Purchased)
+        {
+            Debug.Log("You already purchased " + upgrade.UpgradeName + "!");
+            return;
+        }
         playerMoney.SpendMoney(upgrade.UpgradeCost);
         Debug.Log("Purchased " + upgrade.UpgradeName);
 
         int currLevel = PlayerPrefs.GetInt("SpeedUpgradeLevel");
         PlayerPrefs.SetInt("SpeedUpgradeLevel", currLevel + 1);
+        upgrade.State = upgrade.CheckUpgrade(this);
 
     }
 
@@ -82,12 +104,23 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("You need a Watering Can to purchase " + upgrade.UpgradeName + "!");
             return;
         }
+        else if (upgrade.State == Upgrade.UpgradeState.Purchased)
+        {
+            Debug.Log("You already purchased " + upgrade.UpgradeName + "!");
+            return;
+        }
         playerMoney.SpendMoney(upgrade.UpgradeCost);
         Debug.Log("Purchased " + upgrade.UpgradeName);
 
         upgrade.TendingDevice.Level++;
+        upgrade.State = upgrade.CheckUpgrade(upgrade.TendingDevice, this);
 
     }
 
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("SpeedUpgradeLevel", 0);
+        PlayerPrefs.Save();
+    }
 
 }

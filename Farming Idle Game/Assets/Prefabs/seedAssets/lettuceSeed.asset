@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f2ac19f663fc44092c1f637050212b, type: 3}
   m_Name: lettuceSeed
   m_EditorClassIdentifier: 
-  seedName: Carrot
+  seedName: Lettuce
   plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
   growTime: 5
   icon: {fileID: 21300000, guid: 75578f415a643d64fa57991abcef964c, type: 3}
