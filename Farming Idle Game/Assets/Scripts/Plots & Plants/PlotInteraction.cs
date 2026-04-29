@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlotInteraction : MonoBehaviour, IInteractable
 {
     [Header("Prefabs")]
     [SerializeField] private GameObject dirtMoundPrefab;
+    [SerializeField] private GameObject timerPrefab;
 
     //commented out from 3x3 to 1x1 change
    // [Header("Grid Settings")]
@@ -14,6 +16,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
 
     [Header("References")]
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private GameObject player;
 
     private bool hasPlant = false;
     private bool playerInRange = false;
@@ -24,6 +27,9 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     private List<PlantCycle> plantCycles = new List<PlantCycle>();
 
     private MoneyManager moneyManager;
+    
+    private Coroutine timerCoroutine;
+    private TMP_Text timerText;
 
     void Start()
     {
@@ -67,8 +73,11 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         }
         else
         {
-
-            Debug.Log("Plants are still growing!");
+            // If the player is still waiting on a plant to grow, its growth time will be shown for 5 seconds.
+            if (timerCoroutine == null)
+            {
+                timerCoroutine = StartCoroutine(GetTimeLeft(5f));
+            }
         }
     }
     
@@ -177,5 +186,38 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             return "Press [E] to harvest!";
         else
             return "Growing...";
+    }
+
+    // Handles the functionality of the countdown timer for the plant.
+    private IEnumerator GetTimeLeft(float popupTime)
+    {
+        // Elapsed time tracks the time that has passed so that the pop-up disappears once it has reached popupTime.
+        float elapsedTime = 0f;
+        
+        // Stores the children in the prefab (timer text)
+        GameObject timer = Instantiate(timerPrefab, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
+        timerText = timer.transform.GetChild(1).GetComponent<TMP_Text>();
+        
+        // The loop continues while the plant hasn't finished growing AND the pop-up can still be visible.
+        while (plantCycles[0].currentGrowth != 0 && elapsedTime <= popupTime)
+        {
+            elapsedTime += Time.deltaTime;
+            
+            // Constantly moves the timer text to face the player.
+            Vector3 playerPos = player.transform.position;
+            playerPos.y = timer.transform.position.y;
+            timer.transform.GetChild(0).transform.LookAt(playerPos);
+            timer.transform.GetChild(0).transform.Rotate(0, 180, 0);
+            timer.transform.GetChild(1).transform.LookAt(playerPos);
+            timer.transform.GetChild(1).transform.Rotate(0, 180, 0);
+            
+            float timeRemaining = plantCycles[0].growTime - plantCycles[0].currentGrowth;
+            timerText.text = timeRemaining.ToString("0:00");
+            
+            yield return null;
+        }
+        
+        Destroy(timer);
+        timerCoroutine = null;
     }
 }

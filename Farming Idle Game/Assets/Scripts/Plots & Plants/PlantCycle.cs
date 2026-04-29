@@ -10,8 +10,10 @@ public class PlantCycle : MonoBehaviour
     private bool _isGrowing = false;
     public bool isGrowing { get { return _isGrowing; } }
 
-    private float currentGrowth = 0f;
-    private float growTime = 10f;
+    private float _currentGrowth = 0f;
+    public float currentGrowth { get { return _currentGrowth; } }
+    private float _growTime = 10f;
+    public float growTime { get { return _growTime; } }
     private int sellValue = 5;
 
     private Renderer meshRenderer;
@@ -46,22 +48,22 @@ public class PlantCycle : MonoBehaviour
             return;
         }
 
-        growTime = seed.growTime;
+        _growTime = seed.growTime;
         sellValue = seed.sellPrice;
 
         _isGrowing = true;
-        currentGrowth = 0f;
+        _currentGrowth = 0f;
 
         StartCoroutine(GrowPlant());
     }
 
     IEnumerator GrowPlant()
     {
-        while (currentGrowth < growTime)
+        while (_currentGrowth < _growTime)
         {
-            currentGrowth += Time.deltaTime;
+            _currentGrowth += Time.deltaTime;
 
-            if (meshRenderer != null && currentGrowth > growTime * 0.5f)
+            if (meshRenderer != null && _currentGrowth > _growTime * 0.5f)
                 meshRenderer.enabled = true; // visible halfway
 
             yield return null;
@@ -85,11 +87,11 @@ public class PlantCycle : MonoBehaviour
     {
         if (!_isGrowing) return;
 
-        float remainingTime = growTime - currentGrowth;
+        float remainingTime = _growTime - _currentGrowth;
 
         float reductionAmount = remainingTime * percentReduction;
 
-        growTime -= reductionAmount;
+        _growTime -= reductionAmount;
 
         Debug.Log("Plant tended! Reduced remaining time by " + (percentReduction * 100f) + "%");
     }
