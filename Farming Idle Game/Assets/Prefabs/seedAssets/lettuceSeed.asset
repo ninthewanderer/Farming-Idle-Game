@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: lettuceSeed
   m_EditorClassIdentifier: 
   seedName: Lettuce
-  plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
+  plantPrefab: {fileID: 6013542644425673405, guid: d0bb2d9cca452814990cae4e4fb65792, type: 3}
   growTime: 5
   icon: {fileID: 21300000, guid: 75578f415a643d64fa57991abcef964c, type: 3}
   price: 5

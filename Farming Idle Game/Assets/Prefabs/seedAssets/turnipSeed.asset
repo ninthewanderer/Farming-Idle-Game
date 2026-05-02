@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: turnipSeed
   m_EditorClassIdentifier: 
   seedName: Turnip
-  plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
+  plantPrefab: {fileID: 1461393006372153462, guid: f446e91a41a49b945a066d75c90d5e9d, type: 3}
   growTime: 2
   icon: {fileID: 21300000, guid: fe9ccd84a53967748ad52b0048ee02c4, type: 3}
   price: 500

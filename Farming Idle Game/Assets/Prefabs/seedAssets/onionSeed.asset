@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: onionSeed
   m_EditorClassIdentifier: 
   seedName: Onion
-  plantPrefab: {fileID: 4175038205538805140, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
+  plantPrefab: {fileID: 6044561563848812925, guid: 08b8b34911a623f4eaa10c0c4f7fbbd9, type: 3}
   growTime: 2
   icon: {fileID: 21300000, guid: 380280f178e885b4bbd411580b2d0b82, type: 3}
   price: 500
