@@ -72,13 +72,14 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         {
             if (playerInventory != null && wateringCan != null)
             {
+                float percentReduction = wateringCan.TimeReduction;
                 if (Time.time >= lastTendTime + tendCooldown)
                 {
                     foreach (PlantCycle cycle in plantCycles)
                     {
                         if (cycle.isGrowing)
                         {
-                            cycle.TendPlant(0.25f);
+                            cycle.TendPlant(percentReduction);
                         }
                     }
                     lastTendTime = Time.time;

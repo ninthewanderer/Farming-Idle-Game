@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Watering Can
   m_EditorClassIdentifier: 
   ToolName: Watering Can
-  Level: 1
+  Level: 0
   ToolCost: 600
   Description: A basic watering can. Plants grow slightly faster.
   TimeReduction: 0.1

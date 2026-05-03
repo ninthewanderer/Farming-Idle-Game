@@ -63,8 +63,6 @@ public class UpgradeManager : MonoBehaviour
         speedUpgradeThree.onClick.AddListener(() => PurchaseSpeedUpgrade((SpeedUpgrade)upgradesDictionary["Speed"][2]));
 
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        // listeners for upgrade events
-        //OnSpeedUpgradePurchased += UpgradeSpeed;
     }
 
     void LoadUpgrades()
@@ -133,7 +131,7 @@ public class UpgradeManager : MonoBehaviour
             return;
         }
         else if (upgrade.State == Upgrade.UpgradeState.Purchased)
-        {
+        {  
             Debug.Log("You already purchased " + upgrade.UpgradeName + "!");
             return;
         }
@@ -146,6 +144,7 @@ public class UpgradeManager : MonoBehaviour
         Debug.Log("Purchased " + upgrade.UpgradeName);
 
         upgrade.TendingDevice.Level++;
+        upgrade.TendingDevice.TimeReduction = 0.1f + (upgrade.TendingDevice.Level * 0.1f); // each level reduces time by 10%
     }
 
     // updates the player speed in the PlayerController
@@ -158,6 +157,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        // reset speed upgrades
         PlayerPrefs.SetInt("SpeedUpgradeLevel", 0);
         PlayerPrefs.Save();
     }

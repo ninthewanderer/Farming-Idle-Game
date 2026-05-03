@@ -23,16 +23,20 @@ public class BuyTools : MonoBehaviour
             Debug.Log("Not enough money to buy " + device.ToolName);
             return;
         }
-        else if(inventory.containsTool(device))
+        else if(inventory.GetToolByName(device.ToolName) != null)
         {
             Debug.Log("You already own " + device.ToolName);
             return;
         }
         playerMoney.SpendMoney(device.ToolCost);
-        inventory.addTool(device, 0);
-        Debug.Log("Bought " + device.ToolName);
 
-        purchaseDevice?.Invoke(device);
+        // instantiate instance of tool
+        TendingDevice newDevice = Instantiate(device);
+
+        inventory.addTool(newDevice, 0);
+        Debug.Log("Bought " + newDevice.ToolName);
+
+        purchaseDevice?.Invoke(newDevice);
     }
 
     // Wrapper functions
