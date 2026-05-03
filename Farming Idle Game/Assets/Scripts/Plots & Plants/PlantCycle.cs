@@ -22,17 +22,20 @@ public class PlantCycle : MonoBehaviour
     private float tendCooldown = 1f;
     private float lastTendTime = -999f;
 
-    void Update()
-    {
-        if (playerInRange && Input.GetKeyDown(KeyCode.Q))
-        {
-            if (Time.time >= lastTendTime + tendCooldown)
-            {
-                TendPlant(0.25f);
-                lastTendTime = Time.time;
-            }
-        }
-    }
+    //private PlayerInventory playerInventory;
+    //TendingDevice wateringCan;
+
+    //void Update()
+    //{
+    //    if (playerInRange && Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        if (Time.time >= lastTendTime + tendCooldown)
+    //        {
+    //            TendPlant(0.25f);
+    //            lastTendTime = Time.time;
+    //        }
+    //    }
+    //}
     void OnEnable()
     {
         meshRenderer = GetComponent<Renderer>();
@@ -57,6 +60,11 @@ public class PlantCycle : MonoBehaviour
         StartCoroutine(GrowPlant());
     }
 
+    //public void SetInventory(PlayerInventory inventory)
+    //{
+    //    playerInventory = inventory;
+    //}
+
     IEnumerator GrowPlant()
     {
         while (_currentGrowth < _growTime)
@@ -72,15 +80,33 @@ public class PlantCycle : MonoBehaviour
         _isGrowing = false;
         transform.localScale *= 1.5f; // visual indicator of full growth
     }
-    private void OnMouseDown()
-    {
-        Debug.Log("Play particle effect on plant interaction.");
-        if (isGrowing)
-        {
-            growthParticles.Play();
-            Debug.Log("Play particle effect on plant interaction.");
-        }
-    }   
+    //private void OnMouseDown()
+    //{
+    //    if(!isGrowing) return;
+
+    //    wateringCan = playerInventory.GetToolByName("Watering Can");
+
+    //    if (playerInventory != null && playerInventory.containsTool(wateringCan))
+    //    {
+    //        if (playerInRange && Time.time >= lastTendTime + tendCooldown)
+    //        {
+    //            growthParticles.Play();
+    //            Debug.Log("Play particle effect on plant interaction.");
+
+    //            TendPlant(0.25f);
+    //            lastTendTime = Time.time;
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Wait for tend cooldown!");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("You need a watering can to tend this plant!");
+    //    }
+
+    //}   
     private void OnTriggerEnter(Collider other) => playerInRange = true;
     private void OnTriggerExit(Collider other) => playerInRange = false;
     public void TendPlant(float percentReduction)

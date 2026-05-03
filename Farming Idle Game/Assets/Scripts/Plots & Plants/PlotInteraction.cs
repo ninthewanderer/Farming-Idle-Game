@@ -31,6 +31,9 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     private Coroutine timerCoroutine;
     private TMP_Text timerText;
 
+    private float tendCooldown = 1f;
+    private float lastTendTime = -999f;
+
     void Start()
     {
         moneyManager = FindObjectOfType<MoneyManager>();
@@ -58,6 +61,37 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Interact();
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        TendingDevice wateringCan = playerInventory.GetToolByName("Watering Can");
+        
+        if (hasPlant && !AllPlantsGrown())
+        {
+            if (playerInventory != null && wateringCan != null)
+            {
+                if (Time.time >= lastTendTime + tendCooldown)
+                {
+                    foreach (PlantCycle cycle in plantCycles)
+                    {
+                        if (cycle.isGrowing)
+                        {
+                            cycle.TendPlant(0.25f);
+                        }
+                    }
+                    lastTendTime = Time.time;
+                }
+                else
+                {
+                    Debug.Log("Tending device is on cooldown!");
+                }
+            }
+            else
+            {
+                Debug.Log("Player does not have a watering can!");
+            }
         }
     }
 
@@ -117,6 +151,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         if (cycle != null)
         {
             cycle.SetSeed(selectedSeed);
+            //cycle.SetInventory(playerInventory);
             plantCycles.Add(cycle);
         }
 
@@ -199,7 +234,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         timerText = timer.transform.GetChild(1).GetComponent<TMP_Text>();
         
         // The loop continues while the plant hasn't finished growing AND the pop-up can still be visible.
-        while (plantCycles[0].currentGrowth != 0 && elapsedTime <= popupTime)
+        while (plantCycles[0].isGrowing && elapsedTime <= popupTime)
         {
             elapsedTime += Time.deltaTime;
             

@@ -20,6 +20,9 @@ public class UpgradeManager : MonoBehaviour
     public PlayerInventory inventory;
     public BuyTools buyTools;
 
+    // PlayerController
+    private PlayerController playerController;
+
 
     // Shop interaction
     [SerializeField] private GameObject upgradeShop;
@@ -32,6 +35,13 @@ public class UpgradeManager : MonoBehaviour
     public Button speedUpgradeOne;
     public Button speedUpgradeTwo;
     public Button speedUpgradeThree;
+
+    // upgrade bought events
+    //public delegate void SpeedUpgradePurchased(float level);
+    //public event SpeedUpgradePurchased OnSpeedUpgradePurchased;
+
+    public delegate void ToolUpgradePurchased(TendingDevice device);
+    public event ToolUpgradePurchased OnToolUpgradePurchased;
 
 
 
@@ -51,6 +61,10 @@ public class UpgradeManager : MonoBehaviour
         speedUpgradeOne.onClick.AddListener(() => PurchaseSpeedUpgrade((SpeedUpgrade)upgradesDictionary["Speed"][0]));
         speedUpgradeTwo.onClick.AddListener(() => PurchaseSpeedUpgrade((SpeedUpgrade)upgradesDictionary["Speed"][1]));
         speedUpgradeThree.onClick.AddListener(() => PurchaseSpeedUpgrade((SpeedUpgrade)upgradesDictionary["Speed"][2]));
+
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        // listeners for upgrade events
+        //OnSpeedUpgradePurchased += UpgradeSpeed;
     }
 
     void LoadUpgrades()
@@ -58,6 +72,11 @@ public class UpgradeManager : MonoBehaviour
         // display upgrades in debug for now, place in UI later
         speedUpgrades.LoadUpgrades(this);
         toolUpgrades.LoadUpgrades(this);
+
+        foreach (Upgrade upgrade in upgradesDictionary["Speed"])
+        {
+            Debug.Log(upgrade.UpgradeName + " - " + upgrade.State);
+        }
     }
 
     public void HandleToolPurchase(TendingDevice device)
@@ -69,10 +88,10 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    // Handles speed upgrade purchase
     public void PurchaseSpeedUpgrade(SpeedUpgrade upgrade)
     {
-        // TODO: purchase logic, add event to update upgrades list after purchase
-        //      ^ same with buying tool
+        upgrade.State = upgrade.CheckUpgrade(this);
         if (!playerMoney.CanAfford(upgrade.UpgradeCost))
         {
             Debug.Log("Not enough money to purchase " + upgrade.UpgradeName);
@@ -83,17 +102,26 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("You already purchased " + upgrade.UpgradeName + "!");
             return;
         }
-        playerMoney.SpendMoney(upgrade.UpgradeCost);
+        else if (upgrade.State == Upgrade.UpgradeState.Locked)
+        {
+            Debug.Log(upgrade.UpgradeName + " is locked! Purchase previous upgrades to unlock.");
+            return;
+        }
+            playerMoney.SpendMoney(upgrade.UpgradeCost);
         Debug.Log("Purchased " + upgrade.UpgradeName);
 
         int currLevel = PlayerPrefs.GetInt("SpeedUpgradeLevel");
         PlayerPrefs.SetInt("SpeedUpgradeLevel", currLevel + 1);
-        upgrade.State = upgrade.CheckUpgrade(this);
+
+        UpgradeSpeed(upgrade.Level);
 
     }
 
+    // handles tool upgrade purchase
     public void PurchaseToolUpgrade(ToolUpgrade upgrade)
     {
+        upgrade.State = upgrade.CheckUpgrade(upgrade.TendingDevice, this);
+
         if (!playerMoney.CanAfford(upgrade.UpgradeCost))
         {
             Debug.Log("Not enough money to purchase " + upgrade.UpgradeName);
@@ -109,12 +137,23 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("You already purchased " + upgrade.UpgradeName + "!");
             return;
         }
+        else if (upgrade.State == Upgrade.UpgradeState.Locked)
+        {
+            Debug.Log(upgrade.UpgradeName + " is locked! Purchase previous upgrades to unlock.");
+            return;
+        }
         playerMoney.SpendMoney(upgrade.UpgradeCost);
         Debug.Log("Purchased " + upgrade.UpgradeName);
 
         upgrade.TendingDevice.Level++;
-        upgrade.State = upgrade.CheckUpgrade(upgrade.TendingDevice, this);
+    }
 
+    // updates the player speed in the PlayerController
+    public void UpgradeSpeed(float multiplier)
+    {
+        float upgradePercentage = multiplier * 0.1f; // each level increases speed by 10%
+        float newSpeed = playerController.GetMoveSpeed() * (1f + upgradePercentage);
+        playerController.SetMoveSpeed(newSpeed);
     }
 
     private void OnApplicationQuit()
