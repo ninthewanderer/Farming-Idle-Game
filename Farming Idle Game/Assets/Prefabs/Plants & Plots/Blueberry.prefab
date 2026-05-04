@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.947548
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7165882
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.584886
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8d272659b615f3c4eb288bceab0a0020, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c63d601e79a3bb745b2fbd125f104405, type: 2}
     - target: {fileID: 919132149155446097, guid: 29ccc1214c0e93a469f803f7c222c51a, type: 3}
       propertyPath: m_Name
       value: Blueberry
