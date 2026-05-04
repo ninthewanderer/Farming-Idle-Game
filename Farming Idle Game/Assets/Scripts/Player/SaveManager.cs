@@ -1,61 +1,59 @@
 using System.IO;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
     public MoneyManager moneyManager;
+    public PlotManager plotManager;
+
+    [System.Serializable]
+    public class SaveData
+    {
+        public float money;
+        public List<int> purchasedPlotIDs = new List<int>();
+    }
 
     private string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
 
+    void Awake()
+    {
+        if (plotManager == null)
+            plotManager = FindObjectOfType<PlotManager>();
+    }
+
     public void Save()
     {
-        // ---- LAB 12 WORK ----
         SaveData data = new SaveData();
+
         data.money = moneyManager.GetMoney();
 
-        //string json = JsonUtility.ToJson(data, prettyPrint: true);
-        //File.WriteAllText(SavePath, json);
-        //Debug.Log("Saved to: " + SavePath);
+        // FIX: use method instead of missing field
+        data.purchasedPlotIDs = plotManager.GetPurchasedPlotIDs();
 
+        string json = JsonUtility.ToJson(data);
 
-        // ---- LAB 13 WORK ----
-        PlayerPrefs.SetFloat("Money", data.money);
+        PlayerPrefs.SetString("SaveData", json);
         PlayerPrefs.Save();
-        if (PlayerPrefs.HasKey("Money"))
-        {
-            Debug.Log("Money saved: " + PlayerPrefs.GetFloat("Money"));
-        }
-        else
-        {
-            Debug.LogError("Failed to save money.");
-        }
     }
 
     public void Load()
     {
-        // ---- LAB 12 WORK ----
-        //if (!File.Exists(SavePath))
-        //{
-        //    Debug.Log("No save file found.");
-        //    return;
-        //}
-
-        //string json = File.ReadAllText(SavePath);
-        //SaveData data = JsonUtility.FromJson<SaveData>(json);
-        //moneyManager.CurrentMoney = data.money;
-        //Debug.Log("Loaded money: " + data.money);
-
-
-        // ---- LAB 13 WORK ----
-        if (!PlayerPrefs.HasKey("Money"))
+        if (!PlayerPrefs.HasKey("SaveData"))
         {
             Debug.Log("No save data found.");
             return;
         }
-        moneyManager.CurrentMoney = PlayerPrefs.GetFloat("Money");
-        Debug.Log("Loaded money: " + moneyManager.CurrentMoney);
+
+        string json = PlayerPrefs.GetString("SaveData");
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        moneyManager.CurrentMoney = data.money;
+
+        // FIX: apply to HashSet system properly
+        plotManager.LoadPurchasedPlots(data.purchasedPlotIDs);
     }
+
     void Start()
     {
         Load();

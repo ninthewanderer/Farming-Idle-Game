@@ -1,18 +1,42 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlotManager : MonoBehaviour
 {
-    [SerializeField] GameObject plotPrefab;
-    [SerializeField] Transform[] plotPositions;
+    // Drag ALL your PlotSign objects (IDs 1–31) into this list in inspector
+    [SerializeField] private List<PlotSign> plotSigns = new List<PlotSign>();
 
-    // Start is called before the first frame update
-    void Start()
+    private HashSet<int> purchasedPlots = new HashSet<int>();
+
+    public void RegisterPurchase(int id)
     {
-        GameObject firstPlot = Instantiate(plotPrefab, plotPositions[0].position, Quaternion.identity);
+        purchasedPlots.Add(id);
     }
 
-    // Will continue to update this to spawn more plots as the player progresses, but for now just one plot to test the planting and harvesting mechanics
+    // Save system uses this
+    public List<int> GetPurchasedPlotIDs()
+    {
+        return new List<int>(purchasedPlots);
+    }
 
+    // Load system uses this
+    public void LoadPurchasedPlots(List<int> ids)
+    {
+        purchasedPlots = new HashSet<int>(ids);
+
+        foreach (int id in purchasedPlots)
+        {
+            PlotSign sign = plotSigns.FirstOrDefault(s => s.IDnum == id);
+
+            if (sign != null)
+            {
+                sign.ForceLoadPurchase();
+            }
+            else
+            {
+                Debug.LogWarning("No PlotSign found with ID: " + id);
+            }
+        }
+    }
 }
