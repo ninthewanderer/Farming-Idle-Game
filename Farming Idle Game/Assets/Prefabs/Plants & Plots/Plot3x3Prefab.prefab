@@ -100,6 +100,7 @@ MonoBehaviour:
   timerPrefab: {fileID: 6179338533757942763, guid: 3e509dddd001e614598006d266cf8130, type: 3}
   playerInventory: {fileID: 0}
   player: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!65 &2990034973309140773
 BoxCollider:
   m_ObjectHideFlags: 0

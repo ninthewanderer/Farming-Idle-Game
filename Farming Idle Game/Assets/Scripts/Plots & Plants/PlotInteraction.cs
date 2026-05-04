@@ -17,6 +17,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject camera;
 
     private bool hasPlant = false;
     private bool playerInRange = false;
@@ -240,7 +241,11 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             elapsedTime += Time.deltaTime;
             
             // Constantly moves the timer text to face the player.
-            Vector3 playerPos = player.transform.position;
+            if (camera == null)
+            {
+                camera = GameObject.FindGameObjectWithTag("Camera");
+            }
+            Vector3 playerPos = camera.transform.position;
             playerPos.y = timer.transform.position.y;
             timer.transform.GetChild(0).transform.LookAt(playerPos);
             timer.transform.GetChild(0).transform.Rotate(0, 180, 0);
