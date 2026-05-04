@@ -17913,6 +17913,10 @@ PrefabInstance:
       propertyPath: field of view
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2009317238307753700, guid: 73d51b541e4b9e84c9acb9336f5cf490, type: 3}
+      propertyPath: m_TagString
+      value: Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 3007008188437921419, guid: 73d51b541e4b9e84c9acb9336f5cf490, type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed
       value: 200
@@ -28957,6 +28961,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661791a7284dc4f448c5656b94e2eaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1404421056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306818347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8093eafbbed36d488c155614e6ad974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyManager: {fileID: 48076658}
 --- !u!1001 &1407258695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30163,6 +30180,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3362843186478841676, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1404421052}
+    - targetCorrespondingSourceObject: {fileID: 3362843186478841676, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1404421056}
   m_SourcePrefab: {fileID: 100100000, guid: ea9b287f8561090479ab37a8427e11ef, type: 3}
 --- !u!1 &1449580961
 GameObject:
@@ -42769,17 +42789,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3203838071469030340, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 922899058}
+    - target: {fileID: 3203838071469030340, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1306818347}
-    - target: {fileID: 3203838071469030340, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
-      propertyPath: timerPrefab
-      value: 
-      objectReference: {fileID: 6179338533757942763, guid: 3e509dddd001e614598006d266cf8130, type: 3}
-    - target: {fileID: 3203838071469030340, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
-      propertyPath: dirtMoundPrefab
-      value: 
-      objectReference: {fileID: 7058289362302238884, guid: 2b0e0e596179a084dafee80ad1969393, type: 3}
     - target: {fileID: 3203838071469030340, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
       propertyPath: playerInventory
       value: 
