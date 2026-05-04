@@ -118,8 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399b1ed6b356a8b4aa8abbe9418ba718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRange: 3
+  promptPrefab: {fileID: 6179338533757942763, guid: 148886f817664104090157f571ef6e53, type: 3}
   plotPrefab: {fileID: 3526122615659091070, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
+  interactRange: 3
   gridSize: 1
   spacing: 2
   plotCost: 500

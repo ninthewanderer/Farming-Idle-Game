@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class PlotInteraction : MonoBehaviour, IInteractable
 {
-    [Header("Prefabs")]
+    [Header("References")]
     [SerializeField] private GameObject dirtMoundPrefab;
-    [SerializeField] private GameObject timerPrefab;
+    [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private GameObject camera;
 
+    [Header("Pop-Up Configuration")] 
+    [SerializeField] private float popUpDuration = 5f;
+    [SerializeField] private GameObject timerPrefab;
+    [SerializeField] private GameObject promptPrefab;
+    
     //commented out from 3x3 to 1x1 change
    // [Header("Grid Settings")]
    // [SerializeField] private int gridSize = 3;
    // [SerializeField] private float plantSpacing = 1.0f;
-
-    [Header("References")]
-    [SerializeField] private PlayerInventory playerInventory;
-    [SerializeField] private GameObject player;
-
+   
     private bool hasPlant = false;
     private bool playerInRange = false;
 
@@ -30,6 +32,8 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     
     private Coroutine timerCoroutine;
     private TMP_Text timerText;
+    private Coroutine promptCoroutine;
+    private TMP_Text promptText;
 
     private float tendCooldown = 1f;
     private float lastTendTime = -999f;
@@ -111,9 +115,19 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             // If the player is still waiting on a plant to grow, its growth time will be shown for 5 seconds.
             if (timerCoroutine == null)
             {
-                timerCoroutine = StartCoroutine(GetTimeLeft(5f));
+                timerCoroutine = StartCoroutine(GetTimeLeft(popUpDuration));
             }
         }
+    }
+
+    public string GetInteractPrompt()
+    {
+        if (!hasPlant)
+            return "Press [E] to plant!";
+        else if (AllPlantsGrown())
+            return "Press [E] to harvest!";
+        else
+            return "Press [E] to see time remaining!";
     }
     
     /*original plant grid
@@ -205,7 +219,13 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerInRange = true;
+            if (promptCoroutine == null)
+            {
+                promptCoroutine = StartCoroutine(ShowInteractPrompt(GetInteractPrompt()));
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -214,14 +234,42 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             playerInRange = false;
     }
 
-    public string GetInteractPrompt()
+    // Displays a different pop-up depending on the state of the plot.
+    private IEnumerator ShowInteractPrompt(string popupText)
     {
-        if (!hasPlant)
-            return "Press [E] to plant!";
-        else if (AllPlantsGrown())
-            return "Press [E] to harvest!";
+        // Creates the prompt & changes its text as needed.
+        GameObject prompt = Instantiate(promptPrefab, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
+        prompt.transform.GetChild(0).GetComponent<TMP_Text>().text = popupText;
+        
+        // The loop continues while the player is in range and is not interacting with the plot.
+        while (playerInRange && !Input.GetKeyDown(KeyCode.E) && timerCoroutine == null)
+        {
+            // Constantly moves the prompt text to face the camera.
+            Vector3 cameraPos = camera.transform.position;
+            cameraPos.y = prompt.transform.position.y;
+            prompt.transform.GetChild(0).transform.LookAt(cameraPos);
+            prompt.transform.GetChild(0).transform.Rotate(0, 180, 0);
+
+            yield return null;
+        }
+        
+        Destroy(prompt);
+        yield return null;
+        /* If the player is still in range, the pop-up will reappear.
+         However, it can't reappear while the timer is going because then the text would overlap. */
+        if (playerInRange && timerCoroutine == null)
+        {
+            promptCoroutine = StartCoroutine(ShowInteractPrompt(GetInteractPrompt()));
+        }
+        else if (playerInRange && timerCoroutine != null)
+        {
+            WaitUntil wait = new WaitUntil(() => timerCoroutine == null);
+            promptCoroutine = StartCoroutine(ShowInteractPrompt(GetInteractPrompt()));
+        }
         else
-            return "Growing...";
+        {
+            promptCoroutine = null;
+        }
     }
 
     // Handles the functionality of the countdown timer for the plant.
@@ -239,12 +287,12 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         {
             elapsedTime += Time.deltaTime;
             
-            // Constantly moves the timer text to face the player.
-            Vector3 playerPos = player.transform.position;
-            playerPos.y = timer.transform.position.y;
-            timer.transform.GetChild(0).transform.LookAt(playerPos);
+            // Constantly moves the timer text to face the camera.
+            Vector3 cameraPos = camera.transform.position;
+            cameraPos.y = timer.transform.position.y;
+            timer.transform.GetChild(0).transform.LookAt(cameraPos);
             timer.transform.GetChild(0).transform.Rotate(0, 180, 0);
-            timer.transform.GetChild(1).transform.LookAt(playerPos);
+            timer.transform.GetChild(1).transform.LookAt(cameraPos);
             timer.transform.GetChild(1).transform.Rotate(0, 180, 0);
             
             float timeRemaining = plantCycles[0].growTime - plantCycles[0].currentGrowth;

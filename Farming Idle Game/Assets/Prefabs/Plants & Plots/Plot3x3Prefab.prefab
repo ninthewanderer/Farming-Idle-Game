@@ -97,9 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtMoundPrefab: {fileID: 7058289362302238884, guid: 2b0e0e596179a084dafee80ad1969393, type: 3}
-  timerPrefab: {fileID: 6179338533757942763, guid: 3e509dddd001e614598006d266cf8130, type: 3}
   playerInventory: {fileID: 0}
   player: {fileID: 0}
+  popUpDuration: 5
+  timerPrefab: {fileID: 6179338533757942763, guid: 3e509dddd001e614598006d266cf8130, type: 3}
+  promptPrefab: {fileID: 6179338533757942763, guid: cdd9754abe55973469be5d20f29d5278, type: 3}
 --- !u!65 &2990034973309140773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,5 +121,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 400, y: 400, z: 400}
+  m_Size: {x: 450, y: 450, z: 450}
   m_Center: {x: 0, y: 0, z: 0}
