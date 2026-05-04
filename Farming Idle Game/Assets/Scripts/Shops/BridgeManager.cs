@@ -7,6 +7,7 @@ public class BridgeManager : MonoBehaviour
     public float interactRange = 3f;
     public GameObject bridgeObject;  
     public float BridgeCost = 2000f;
+    public GameObject bridgeBlock;
 
     private MoneyManager moneyManager;
     private GameObject player;
@@ -48,6 +49,11 @@ public class BridgeManager : MonoBehaviour
         else
         {
             Debug.LogError("Bridge object not assigned in the Inspector!");
+        }
+
+        if (bridgeBlock != null)
+        {
+            bridgeBlock.SetActive(true);
         }
     }
 
@@ -94,6 +100,11 @@ public class BridgeManager : MonoBehaviour
         if (bridgeObject != null)
         {
             bridgeObject.SetActive(true);
+        }
+
+        if (bridgeBlock != null)
+        {
+            bridgeBlock.SetActive(false);
         }
     }
 

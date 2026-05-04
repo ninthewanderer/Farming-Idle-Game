@@ -132,7 +132,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         // Spawn dirt mound
         GameObject dirt = Instantiate(
             dirtMoundPrefab,
-            transform.position + new Vector3(0, 0.1f, 0),
+            transform.position + new Vector3(0, 0.5f, 0),
             Quaternion.identity
         );
         dirt.transform.parent = transform;
@@ -141,7 +141,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         // Spawn plant
         GameObject newPlant = Instantiate(
             selectedSeed.plantPrefab,
-            transform.position + new Vector3(0, 0.4f, 0),
+            transform.position + new Vector3(0, 0.8f, 0),
             Quaternion.identity
         );
         newPlant.transform.parent = transform;
