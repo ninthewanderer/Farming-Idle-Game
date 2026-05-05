@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af2f811dc1d1d504292d38b8a6c08da1, type: 2}
+  - {fileID: 2100000, guid: 5446b13a3f5178949881b9d0eb3de0c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptPrefab: {fileID: 6179338533757942763, guid: 148886f817664104090157f571ef6e53, type: 3}
   plotPrefab: {fileID: 3526122615659091070, guid: a2f2d812b4bf4a94180e4ef37cbf7394, type: 3}
-  interactRange: 3
+  camera: {fileID: 0}
   gridSize: 1
   spacing: 2
   plotCost: 500

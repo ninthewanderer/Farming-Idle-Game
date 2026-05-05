@@ -9,7 +9,7 @@ public class PlotSign : MonoBehaviour
     private GameObject createdPrompt;
     public GameObject promptPrefab;
     public GameObject plotPrefab;
-    public GameObject camera;
+    private Camera playerCamera;
     public int gridSize = 1;
     public float spacing = 2f;
     public float plotCost = 500f;
@@ -44,6 +44,8 @@ public class PlotSign : MonoBehaviour
 
     private void Start()
     {
+        playerCamera = FindObjectOfType<Camera>();
+
         moneyManager = FindObjectOfType<MoneyManager>();
         saveManager = FindObjectOfType<SaveManager>();
         plotManager = FindObjectOfType<PlotManager>();
@@ -116,11 +118,11 @@ public class PlotSign : MonoBehaviour
         while (playerInRange && !Input.GetKeyDown(KeyCode.E) && !plotBought)
         {
             // Constantly moves the prompt text to face the camera.
-            Vector3 cameraPos = camera.transform.position;
-            cameraPos.y = createdPrompt.transform.position.y;
-            createdPrompt.transform.GetChild(0).transform.LookAt(cameraPos);
+            Vector3 playerCameraPos = playerCamera.transform.position;
+            playerCameraPos.y = createdPrompt.transform.position.y;
+            createdPrompt.transform.GetChild(0).transform.LookAt(playerCameraPos);
             createdPrompt.transform.GetChild(0).transform.Rotate(0, 180, 0);
-            createdPrompt.transform.GetChild(1).transform.LookAt(cameraPos);
+            createdPrompt.transform.GetChild(1).transform.LookAt(playerCameraPos);
             createdPrompt.transform.GetChild(1).transform.Rotate(0, 180, 0);
 
             yield return null;

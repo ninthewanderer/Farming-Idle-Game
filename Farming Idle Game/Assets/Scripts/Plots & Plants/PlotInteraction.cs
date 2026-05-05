@@ -8,7 +8,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] private GameObject dirtMoundPrefab;
     [SerializeField] private PlayerInventory playerInventory;
-    [SerializeField] private GameObject camera;
+    private Camera playerCamera;
 
     [Header("Pop-Up Configuration")] 
     [SerializeField] private float popUpDuration = 5f;
@@ -40,6 +40,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
 
     void Start()
     {
+        playerCamera = FindObjectOfType<Camera>();
         moneyManager = FindObjectOfType<MoneyManager>();
 
         if (playerInventory == null)
@@ -245,9 +246,9 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         while (playerInRange && !Input.GetKeyDown(KeyCode.E) && timerCoroutine == null)
         {
             // Constantly moves the prompt text to face the camera.
-            Vector3 cameraPos = camera.transform.position;
-            cameraPos.y = prompt.transform.position.y;
-            prompt.transform.GetChild(0).transform.LookAt(cameraPos);
+            Vector3 playerCameraPos = playerCamera.transform.position;
+            playerCameraPos.y = prompt.transform.position.y;
+            prompt.transform.GetChild(0).transform.LookAt(playerCameraPos);
             prompt.transform.GetChild(0).transform.Rotate(0, 180, 0);
 
             yield return null;
@@ -287,12 +288,12 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         {
             elapsedTime += Time.deltaTime;
             
-            // Constantly moves the timer text to face the camera.
-            Vector3 cameraPos = camera.transform.position;
-            cameraPos.y = timer.transform.position.y;
-            timer.transform.GetChild(0).transform.LookAt(cameraPos);
+            // Constantly moves the timer text to face the playerCamera.
+            Vector3 playerCameraPos = playerCamera.transform.position;
+            playerCameraPos.y = timer.transform.position.y;
+            timer.transform.GetChild(0).transform.LookAt(playerCameraPos);
             timer.transform.GetChild(0).transform.Rotate(0, 180, 0);
-            timer.transform.GetChild(1).transform.LookAt(cameraPos);
+            timer.transform.GetChild(1).transform.LookAt(playerCameraPos);
             timer.transform.GetChild(1).transform.Rotate(0, 180, 0);
             
             float timeRemaining = plantCycles[0].growTime - plantCycles[0].currentGrowth;
