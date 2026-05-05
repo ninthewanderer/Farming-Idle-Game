@@ -70,9 +70,10 @@ public class BridgeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
-            if (createdPrompt != null)
+            if (promptCoroutine != null)
             {
                 Destroy(createdPrompt);
+                promptCoroutine = null;
             }
 
             TryBuyBridge();
@@ -87,7 +88,7 @@ public class BridgeManager : MonoBehaviour
 
             if (promptCoroutine == null && !bridgeBought)
             {
-                StartCoroutine(ShowPurchasePrompt());
+                promptCoroutine = StartCoroutine(ShowPurchasePrompt());
             }
         }
     }

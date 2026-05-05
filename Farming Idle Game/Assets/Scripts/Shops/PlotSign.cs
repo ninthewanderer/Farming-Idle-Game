@@ -67,6 +67,7 @@ public class PlotSign : MonoBehaviour
             if (promptCoroutine != null)
             {
                 StopCoroutine(promptCoroutine);
+                promptCoroutine = null;
                 Destroy(createdPrompt);
             }
             
@@ -81,7 +82,7 @@ public class PlotSign : MonoBehaviour
             playerInRange = true;
             if (promptCoroutine == null && !plotBought)
             {
-                StartCoroutine(ShowPurchasePrompt());
+               promptCoroutine = StartCoroutine(ShowPurchasePrompt());
             }
         }
     }
