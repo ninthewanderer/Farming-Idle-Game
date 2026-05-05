@@ -8,6 +8,11 @@ public class UiManager : MonoBehaviour
 {
 
     public PlayerInventory inventory;
+    private RectTransform startingMoneyPos;
+    private Vector2 startingPos;
+    public RectTransform shopMoneyPos;
+    public CanvasGroup seedShopUI;
+    public CanvasGroup upgradeShopUI;
 
     // Seeds
     public Image seedIcon;
@@ -22,6 +27,8 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
+        startingMoneyPos = text.gameObject.GetComponent<RectTransform>();
+        startingPos = new Vector2(startingMoneyPos.anchoredPosition.x, startingMoneyPos.anchoredPosition.y);
         moneyManager = FindObjectOfType<MoneyManager>();
     }
 
@@ -29,6 +36,16 @@ public class UiManager : MonoBehaviour
     {
         text.text = FormatNumber(moneyManager.GetMoney());
         UpdateSeedUI();
+
+        if (seedShopUI.gameObject.activeSelf || upgradeShopUI.gameObject.activeSelf)
+        {
+            text.gameObject.GetComponent<RectTransform>().anchoredPosition =
+            new Vector2(shopMoneyPos.anchoredPosition.x, shopMoneyPos.anchoredPosition.y);
+        }
+        else
+        {
+            text.gameObject.GetComponent<RectTransform>().anchoredPosition = startingPos;
+        }
     }
 
     string FormatNumber(double num)
@@ -43,11 +60,11 @@ public class UiManager : MonoBehaviour
 
         if (suffixIndex < suffixes.Length - 1 || num < 1000)
         {
-            return num.ToString("0.#") + suffixes[suffixIndex];
+            return num.ToString("$0.#") + suffixes[suffixIndex];
         }
         else
         {
-            return num.ToString("0.##e0");
+            return num.ToString("$0.##e0");
         }
     }
 

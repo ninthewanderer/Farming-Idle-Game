@@ -5,9 +5,15 @@ using UnityEngine;
 using System.Xml;
 using System.IO;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ShopManager : MonoBehaviour, IInteractable
 {
+    public GameObject promptPrefab;
+    private Camera playerCamera;
+    private Coroutine promptCoroutine;
+    private TMP_Text promptText;
+
     public ResourceManager resourceManager;
     public MoneyManager moneyManager;
     public PlayerController playerController;
@@ -79,6 +85,7 @@ public class ShopManager : MonoBehaviour, IInteractable
 
     void Start()
     {
+        playerCamera = FindObjectOfType<Camera>();
         shopUI.gameObject.SetActive(false);
     }
 
@@ -95,13 +102,50 @@ public class ShopManager : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerInRange = true;
+            if (promptCoroutine == null)
+            {
+                promptCoroutine = StartCoroutine(ShowShopPrompt());
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
             playerInRange = false;
+    }
+
+    private IEnumerator ShowShopPrompt()
+    {
+        // Creates the prompt
+        GameObject createdPrompt = Instantiate(promptPrefab, transform.position + new Vector3(0, 4f, 0), Quaternion.identity);
+        createdPrompt.transform.GetChild(0).GetComponent<TMP_Text>().text = "Press [E] to open & close shop!";
+
+        // The loop continues while the player is in range and is not interacting with the sign.
+        while (playerInRange && !Input.GetKeyDown(KeyCode.E))
+        {
+            // Constantly moves the prompt text to face the camera.
+            Vector3 playerCameraPos = playerCamera.transform.position;
+            playerCameraPos.y = createdPrompt.transform.position.y;
+            createdPrompt.transform.GetChild(0).transform.LookAt(playerCameraPos);
+            createdPrompt.transform.GetChild(0).transform.Rotate(0, 180, 0);
+
+            yield return null;
+        }
+        
+        Destroy(createdPrompt);
+        yield return null;
+
+        if (playerInRange)
+        {
+            promptCoroutine = StartCoroutine(ShowShopPrompt());
+        }
+        else
+        {
+            promptCoroutine = null;
+        }
     }
 
     public void Interact()
