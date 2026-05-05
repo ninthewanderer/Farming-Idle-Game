@@ -12800,6 +12800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 824599045}
+  moneyBackground: {fileID: 0}
   shopMoneyPos: {fileID: 1781638569}
   seedShopUI: {fileID: 1684954275}
   upgradeShopUI: {fileID: 401268441}
@@ -18733,7 +18734,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
