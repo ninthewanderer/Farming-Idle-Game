@@ -60,11 +60,11 @@ public class UiManager : MonoBehaviour
 
         if (suffixIndex < suffixes.Length - 1 || num < 1000)
         {
-            return num.ToString("$0.#") + suffixes[suffixIndex];
+            return num.ToString("0.#") + suffixes[suffixIndex];
         }
         else
         {
-            return num.ToString("$0.##e0");
+            return num.ToString("0.##e0");
         }
     }
 
