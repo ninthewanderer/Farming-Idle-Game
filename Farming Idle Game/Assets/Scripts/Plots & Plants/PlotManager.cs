@@ -23,6 +23,8 @@ public class PlotManager : MonoBehaviour
     // Load system uses this
     public void LoadPurchasedPlots(List<int> ids)
     {
+        Debug.Log("Loading Plot IDs: " + string.Join(", ", ids));
+
         purchasedPlots = new HashSet<int>(ids);
 
         foreach (int id in purchasedPlots)

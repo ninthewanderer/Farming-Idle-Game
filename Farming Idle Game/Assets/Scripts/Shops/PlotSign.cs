@@ -32,7 +32,9 @@ public class PlotSign : MonoBehaviour
     private void Awake()
     {
         allSigns.Add(this);
-        SignEvent += IncreaseOtherSignPrices;
+
+        // Normal gameplay: checks money + increases prices
+        SignEvent += () => IncreaseOtherSignPrices(true);
     }
 
     private void OnDestroy()
@@ -149,14 +151,12 @@ public class PlotSign : MonoBehaviour
         }
     }
 
-    // NEW: used only when loading a save (does NOT charge money)
+    // LOAD VERSION (no money check, but still increases prices)
     public void ForceLoadPurchase()
     {
         try
         {
-            SignEvent?.Invoke();
-
-            plotManager.RegisterPurchase(IDnum);
+            IncreaseOtherSignPrices(false);
 
             SpawnPlots();
 
@@ -183,11 +183,21 @@ public class PlotSign : MonoBehaviour
         }
     }
 
-    private void IncreaseOtherSignPrices()
+    // UPDATED: can skip money check during load
+    private void IncreaseOtherSignPrices(bool checkMoney = true)
     {
-        if (!moneyManager.CanAfford(plotCost))
+        if (checkMoney)
         {
-            throw new Exception("Not enough money to buy plots!");
+            if (moneyManager == null)
+            {
+                Debug.LogError("MoneyManager is NULL during price check");
+                return;
+            }
+
+            if (!moneyManager.CanAfford(plotCost))
+            {
+                throw new Exception("Not enough money to buy plots!");
+            }
         }
 
         foreach (PlotSign sign in allSigns)
