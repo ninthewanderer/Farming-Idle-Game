@@ -10,6 +10,7 @@ public class UiManager : MonoBehaviour
     public PlayerInventory inventory;
     private RectTransform startingMoneyPos;
     private Vector2 startingPos;
+    public CanvasGroup moneyBackground;
     public RectTransform shopMoneyPos;
     public CanvasGroup seedShopUI;
     public CanvasGroup upgradeShopUI;
@@ -39,11 +40,13 @@ public class UiManager : MonoBehaviour
 
         if (seedShopUI.gameObject.activeSelf || upgradeShopUI.gameObject.activeSelf)
         {
+            moneyBackground.gameObject.SetActive(false);
             text.gameObject.GetComponent<RectTransform>().anchoredPosition =
             new Vector2(shopMoneyPos.anchoredPosition.x, shopMoneyPos.anchoredPosition.y);
         }
         else
         {
+            moneyBackground.gameObject.SetActive(true);
             text.gameObject.GetComponent<RectTransform>().anchoredPosition = startingPos;
         }
     }
