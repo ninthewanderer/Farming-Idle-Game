@@ -59,8 +59,6 @@ public class ToggleSensitivity : MonoBehaviour
         var pov = virtualCamera.GetCinemachineComponent<CinemachinePOV>();
         pov.m_HorizontalAxis.m_MaxSpeed = value;
         pov.m_VerticalAxis.m_MaxSpeed = value;
-        Debug.Log("Event has been triggered.");
-        Debug.Log(value);
     }
 
     // Changes the text on the screen.
