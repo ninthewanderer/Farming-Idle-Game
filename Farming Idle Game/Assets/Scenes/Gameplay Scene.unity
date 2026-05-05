@@ -15899,19 +15899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6261f79a089f643ad10e60af243d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory:
-  - seed: {fileID: 11400000, guid: 20b82837dafdec345be07b5c87d95922, type: 2}
-    quantity: 1
-    device: {fileID: 0}
-    level: 0
-  - seed: {fileID: 11400000, guid: 78c56521d623cc34ba581fa2750c07a4, type: 2}
-    quantity: 0
-    device: {fileID: 0}
-    level: 0
-  - seed: {fileID: 11400000, guid: 87823b776b2f9ce4b9d32e4687286e1d, type: 2}
-    quantity: 0
-    device: {fileID: 0}
-    level: 0
+  inventory: []
   selectedIndex: 0
   scrollFlag: 0
 --- !u!114 &824599046

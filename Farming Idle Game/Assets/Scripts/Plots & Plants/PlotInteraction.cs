@@ -144,6 +144,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             Debug.Log("No seed selected!");
             return;
         }
+        Debug.Log(selectedSeed);
 
         // Spawn dirt mound
         GameObject dirt = Instantiate(
@@ -170,10 +171,13 @@ public class PlotInteraction : MonoBehaviour, IInteractable
             cycle.SetSeed(selectedSeed);
             //cycle.SetInventory(playerInventory);
             plantCycles.Add(cycle);
+        } else
+        {
+            Debug.Log("Cycle null!");
         }
 
-        // Track planted seed
-        plantedSeeds.Add(selectedSeed);
+            // Track planted seed
+            plantedSeeds.Add(selectedSeed);
 
         // Remove ONE seed from inventory
         playerInventory.UseSelectedSeed();

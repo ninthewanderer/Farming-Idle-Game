@@ -52,6 +52,7 @@ public class PlantCycle : MonoBehaviour
         }
 
         _growTime = seed.growTime;
+        Debug.Log(seed.growTime);
         sellValue = seed.sellPrice;
 
         _isGrowing = true;

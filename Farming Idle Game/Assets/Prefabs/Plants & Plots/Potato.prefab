@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239bf331a1f32af42be809afd18be56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthParticles: {fileID: 6270100714264975442, guid: 957b79ff60f5a5e4e885df1165323f11, type: 3}
+  growthParticles: {fileID: 3419592659251853828, guid: 7798790ca323776429821d9fae0afb3e, type: 3}
