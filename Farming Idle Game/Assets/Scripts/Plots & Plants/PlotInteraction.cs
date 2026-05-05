@@ -14,6 +14,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
     [SerializeField] private float popUpDuration = 5f;
     [SerializeField] private GameObject timerPrefab;
     [SerializeField] private GameObject promptPrefab;
+    private bool plantHarvested;
     
     //commented out from 3x3 to 1x1 change
    // [Header("Grid Settings")]
@@ -213,6 +214,7 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         plantedSeeds.Clear();
 
         hasPlant = false;
+        plantHarvested = true;
 
         Debug.Log("Plants harvested for $" + totalMoney + "!");
     }
@@ -242,32 +244,40 @@ public class PlotInteraction : MonoBehaviour, IInteractable
         GameObject prompt = Instantiate(promptPrefab, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
         prompt.transform.GetChild(0).GetComponent<TMP_Text>().text = popupText;
         
-        // The loop continues while the player is in range and is not interacting with the plot.
-        while (playerInRange && !Input.GetKeyDown(KeyCode.E) && timerCoroutine == null)
+        // The loop continues while the player is in range and is not interacting with the plot or the state of the plot has not changed.
+        while (playerInRange && !Input.GetKeyDown(KeyCode.E) && timerCoroutine == null && !plantHarvested)
         {
+            if (hasPlant && AllPlantsGrown())
+            {
+                prompt.transform.GetChild(0).GetComponent<TMP_Text>().text = GetInteractPrompt();
+                yield return null;
+            }
+            
             // Constantly moves the prompt text to face the camera.
             Vector3 playerCameraPos = playerCamera.transform.position;
             playerCameraPos.y = prompt.transform.position.y;
             prompt.transform.GetChild(0).transform.LookAt(playerCameraPos);
             prompt.transform.GetChild(0).transform.Rotate(0, 180, 0);
-
+            
             yield return null;
         }
-        
+
         Destroy(prompt);
         yield return null;
         /* If the player is still in range, the pop-up will reappear.
          However, it can't reappear while the timer is going because then the text would overlap. */
         if (playerInRange && timerCoroutine == null)
         {
+            plantHarvested = false;
             promptCoroutine = StartCoroutine(ShowInteractPrompt(GetInteractPrompt()));
         }
         else if (playerInRange && timerCoroutine != null)
         {
             WaitUntil wait = new WaitUntil(() => timerCoroutine == null);
+            plantHarvested = false;
             promptCoroutine = StartCoroutine(ShowInteractPrompt(GetInteractPrompt()));
         }
-        else
+        else 
         {
             promptCoroutine = null;
         }

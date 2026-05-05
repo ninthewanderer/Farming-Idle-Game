@@ -40,14 +40,20 @@ public class UiManager : MonoBehaviour
 
         if (seedShopUI.gameObject.activeSelf || upgradeShopUI.gameObject.activeSelf)
         {
-            moneyBackground.gameObject.SetActive(false);
-            text.gameObject.GetComponent<RectTransform>().anchoredPosition =
-            new Vector2(shopMoneyPos.anchoredPosition.x, shopMoneyPos.anchoredPosition.y);
+            if (moneyBackground != null && shopMoneyPos != null)
+            {
+                moneyBackground.gameObject.SetActive(false);
+                text.gameObject.GetComponent<RectTransform>().anchoredPosition = 
+                    new Vector2(shopMoneyPos.anchoredPosition.x, shopMoneyPos.anchoredPosition.y);
+            }
         }
         else
         {
-            moneyBackground.gameObject.SetActive(true);
-            text.gameObject.GetComponent<RectTransform>().anchoredPosition = startingPos;
+            if (moneyBackground != null && shopMoneyPos != null)
+            {
+                moneyBackground.gameObject.SetActive(true);
+                text.gameObject.GetComponent<RectTransform>().anchoredPosition = startingPos;
+            }
         }
     }
 
