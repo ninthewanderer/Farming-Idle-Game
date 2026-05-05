@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Corn
   plantPrefab: {fileID: 5688495629125840152, guid: 1bf9b32c901951b408c80877184d212b, type: 3}
-  growTime: 2
+  growTime: 30
   icon: {fileID: 21300000, guid: c05ccb88d9dbb1a449daea9880d5e191, type: 3}
-  price: 500
-  sellPrice: 1500
+  price: 200
+  sellPrice: 600

@@ -17,4 +17,4 @@ MonoBehaviour:
   ToolCost: 600
   Description: A basic watering can. Plants grow slightly faster.
   TimeReduction: 0.1
-  icon: {fileID: 21300000, guid: edd46f2ad18bf854cbcf498783d09467, type: 3}
+  icon: {fileID: 21300000, guid: 8da98b8dfb2bc1849bc561c9ec239ff6, type: 3}

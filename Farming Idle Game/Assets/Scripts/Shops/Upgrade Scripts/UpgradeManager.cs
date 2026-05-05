@@ -47,6 +47,11 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
+        // reset speed upgrades
+        PlayerPrefs.SetInt("SpeedUpgradeLevel", 0);
+        PlayerPrefs.Save();
+        Debug.Log("Reset speed upgrades on application start.");
+
         LoadUpgrades();
 
         // subscribe to buy tool event
@@ -157,9 +162,10 @@ public class UpgradeManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        // reset speed upgrades
-        PlayerPrefs.SetInt("SpeedUpgradeLevel", 0);
-        PlayerPrefs.Save();
+        //// reset speed upgrades
+        //Debug.Log("Reset speed upgrades on application quit.");
+        //PlayerPrefs.SetInt("SpeedUpgradeLevel", 0);
+        //PlayerPrefs.Save();
     }
 
 }

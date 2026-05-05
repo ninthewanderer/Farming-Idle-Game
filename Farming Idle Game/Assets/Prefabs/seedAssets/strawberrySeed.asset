@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Strawberry
   plantPrefab: {fileID: 5550126437082176295, guid: 126507297e9d2924a9f58b5922cfb04a, type: 3}
-  growTime: 2
+  growTime: 50
   icon: {fileID: 21300000, guid: e307be702110e154b8ca5e076c625e4f, type: 3}
-  price: 500
-  sellPrice: 1500
+  price: 700
+  sellPrice: 2100

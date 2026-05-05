@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Bell Pepper
   plantPrefab: {fileID: 8129686402595781910, guid: 8db5229da92f8fa47be309aabb57c88f, type: 3}
-  growTime: 2
+  growTime: 40
   icon: {fileID: 21300000, guid: 521729e0423d3d0479b556fd0a62073c, type: 3}
   price: 500
   sellPrice: 1500

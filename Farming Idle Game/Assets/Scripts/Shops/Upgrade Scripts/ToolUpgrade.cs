@@ -54,9 +54,9 @@ public class ToolUpgrade : Upgrade
         TendingDevice = upgradeManager.inventory.GetToolByName("Watering Can");
         List<Upgrade> wateringCanUpgrades = new List<Upgrade>()
         {
-            new ToolUpgrade("Watering Can Upgrade 1", 25f, "Increases watering can level to 2.", 1f, Upgrade.UpgradeState.Locked, TendingDevice),
-            new ToolUpgrade("Watering Can Upgrade 2", 50f, "Increases watering can level to 3.", 2f, Upgrade.UpgradeState.Locked, TendingDevice),
-            new ToolUpgrade("Watering Can Upgrade 3", 100f, "Increases watering can level to 4.", 3f, Upgrade.UpgradeState.Locked, TendingDevice)
+            new ToolUpgrade("Watering Can Upgrade 1", 700f, "Increases watering can level to 2.", 1f, Upgrade.UpgradeState.Locked, TendingDevice),
+            new ToolUpgrade("Watering Can Upgrade 2", 900f, "Increases watering can level to 3.", 2f, Upgrade.UpgradeState.Locked, TendingDevice),
+            new ToolUpgrade("Watering Can Upgrade 3", 1200f, "Increases watering can level to 4.", 3f, Upgrade.UpgradeState.Locked, TendingDevice)
         };
 
 

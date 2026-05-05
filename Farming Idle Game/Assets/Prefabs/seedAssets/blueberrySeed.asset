@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Blueberry
   plantPrefab: {fileID: 3549249555002487018, guid: 92529e6bae32bfd42ab9c1da7c63f59d, type: 3}
-  growTime: 2
+  growTime: 50
   icon: {fileID: 21300000, guid: b437be3858f69ef40aec987ee3bf837e, type: 3}
-  price: 500
-  sellPrice: 1500
+  price: 700
+  sellPrice: 2100

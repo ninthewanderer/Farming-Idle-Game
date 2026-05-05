@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Spinach
   plantPrefab: {fileID: 2177353168049523079, guid: 7f258510c8fd82e498b2e52c6f2a331e, type: 3}
-  growTime: 2
+  growTime: 30
   icon: {fileID: 21300000, guid: b042f463a8747cb478ad5014dac6f8dd, type: 3}
-  price: 500
-  sellPrice: 1500
+  price: 200
+  sellPrice: 600

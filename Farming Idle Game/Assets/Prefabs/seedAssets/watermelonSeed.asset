@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Watermelon
   plantPrefab: {fileID: 7070488526297113586, guid: 85674662dc776194fa50eff7349eced2, type: 3}
-  growTime: 2
+  growTime: 60
   icon: {fileID: 21300000, guid: 28c4d7a0f188bec458f017f74da2d296, type: 3}
-  price: 500
-  sellPrice: 1500
+  price: 1000
+  sellPrice: 3000

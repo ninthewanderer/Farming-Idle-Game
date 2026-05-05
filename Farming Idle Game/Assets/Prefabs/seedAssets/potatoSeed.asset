@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Potato
   plantPrefab: {fileID: 4040461820941500402, guid: ecb45b2db3811e64ca5c0d123bb4f098, type: 3}
-  growTime: 15
+  growTime: 20
   icon: {fileID: 21300000, guid: 0657b4521c421f744898e494c1f28822, type: 3}
   price: 100
   sellPrice: 300
